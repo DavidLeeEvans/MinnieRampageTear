@@ -6,8 +6,8 @@ mkdir -p ./bundle/HTML5
 
 # /home/david/DEFOLD/Minnietaur
 #cp ~/python_server.py "/home/david/DEFOLD/Minnietaur"
-#cp ./mock_index.html "/home/david/DEFOLD/8/Rili/bundle/HTML5/RailRoad Runner/index.html" 
-#cp -r common/css "/home/david/DEFOLD/8/Rili/bundle/HTML5/RailRoad Runner" 
-#cp -r common/img "/home/david/DEFOLD/8/Rili/bundle/HTML5/RailRoad Runner" 
-#cp -r common/js "/home/david/DEFOLD/8/Rili/bundle/HTML5/RailRoad Runner" 
-#cp  common/fbapp-config.json "/home/david/DEFOLD/8/Rili/bundle/HTML5/RailRoad Runner"
+#cp ./mock_index.html "/home/david/DEFOLD/Minnietuar/bundle/HTML5/Minnietaur/index.html" 
+#cp -r common/css "/home/david/DEFOLD/Minnietuar/bundle/HTML5/Minnietaur/" 
+#cp -r common/img "/home/david/DEFOLD/Minnietaur/bundle/HTML5/Minnietaur/" 
+#cp -r common/js "/home/david/DEFOLD/Minnietuar/bundle/HTML5/Minnietaur/" 
+#cp  common/fbapp-config.json "/home/david/DEFOLD/bundle/HTML5/Minnietuar/"
