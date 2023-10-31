@@ -5,6 +5,7 @@ tile_margin: 0
 tile_spacing: 0
 collision: ""
 material_tag: "tile"
+
 animations {
   id: "tile001"
   start_tile: 1
@@ -1013,7 +1014,6 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
-
 extrude_borders: 2
 inner_padding: 0
 sprite_trim_mode: SPRITE_TRIM_MODE_OFF
