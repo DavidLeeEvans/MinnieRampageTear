@@ -15,3 +15,5 @@ local_server/RailRoadRunner_wasm.js
 local_server/archive/
 local_server/dmloader.js
 local_server/index.html
+/.internal
+/build
