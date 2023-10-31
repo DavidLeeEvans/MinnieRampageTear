@@ -1,0 +1,14 @@
+mouse_trigger {
+  input: MOUSE_BUTTON_LEFT
+  action: "touch"
+}
+
+key_trigger {
+  input: KEY_A
+  action: "add"
+}
+
+key_trigger {
+  input: KEY_Z
+  action: "delete"
+}
