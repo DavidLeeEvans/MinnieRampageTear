@@ -1,0 +1,3 @@
+prototype: "/game/tilesheet/tile002.go"
+load_dynamically: false
+dynamic_prototype: false

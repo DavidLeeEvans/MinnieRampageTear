@@ -51,3 +51,6 @@ show_fullscreen_button = 0
 show_made_with_defold = 0
 scale_mode = fit
 
+[collectionfactory]
+max_count = 256
+
