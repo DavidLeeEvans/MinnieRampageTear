@@ -12,6 +12,7 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
+import dex.lib.orthographic.Camera;
 
 private typedef GameLogicData = {
 	var run_game:Bool;
