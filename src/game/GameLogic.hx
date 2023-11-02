@@ -3,6 +3,7 @@ package game;
 import Defold.hash;
 import defold.Factory;
 import defold.Go.GoMessages;
+import defold.Go;
 import defold.Msg;
 import defold.Render.RenderMessages;
 import defold.Tilemap.TilemapBounds;
@@ -43,6 +44,7 @@ class GameLogic extends Script<GameLogicData> {
 		self._loaded = false;
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
+		// Stopped Here
 		map_bounds = Tilemap.get_bounds("/go#tilemap");
 		for (x in map_bounds.x...map_bounds.w)
 			for (y in map_bounds.y...map_bounds.h) {

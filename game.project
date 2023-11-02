@@ -12,7 +12,7 @@ dependencies#4 = https://github.com/defold/extension-fbinstant/archive/master.zi
 dependencies#5 = https://github.com/defold/extension-spine/archive/master.zip
 
 [bootstrap]
-main_collection = /Main.collectionc
+main_collection = /game/levels/level00.collectionc
 render = /orthographic/render/orthographic.renderc
 
 [input]
