@@ -12,11 +12,11 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
-import dex.lib.orthographic.Camera;
 
 private typedef GameLogicData = {
 	var run_game:Bool;
 	var level:Int;
+	var _minnie:Hash;
 	var _loaded:Bool;
 }
 
@@ -42,8 +42,6 @@ class GameLogic extends Script<GameLogicData> {
 		for (x in map_bounds.x...map_bounds.w)
 			for (y in map_bounds.y...map_bounds.h) {
 				game_level = Tilemap.get_tile("/go#tilemap", "entities", x, y);
-				if (game_level != 0)
-					create_entity_function(x, y, game_level, self);
 			}
 		// Set camera to follow Horse
 		var follow:FollowOptions = {
@@ -53,7 +51,7 @@ class GameLogic extends Script<GameLogicData> {
 			vertical: true,
 			immediate: false
 		}
-		Camera.follow(hash('/camera'), self._horse_hash, follow);
+		Camera.follow(hash('/camera'), self._minnie, follow);
 
 		self.level = SaveLoad.get_all_saved_data().game_level;
 		load_level(self);
