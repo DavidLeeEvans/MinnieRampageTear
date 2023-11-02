@@ -5,6 +5,7 @@ import defold.Factory;
 import defold.Go.GoMessages;
 import defold.Msg;
 import defold.Render.RenderMessages;
+import defold.Tilemap.TilemapBounds;
 import defold.Tilemap;
 import defold.Vmath;
 import defold.support.Script;
@@ -12,7 +13,7 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
-import dex.lib.orthographic.Camera;
+import dex.scripts.CameraController;
 
 private typedef GameLogicData = {
 	var run_game:Bool;
@@ -21,6 +22,17 @@ private typedef GameLogicData = {
 	var _loaded:Bool;
 }
 
+// private var test:CameraControllerProperties = {
+// 	center: Vmath.vector3(0, 0, 0),
+// 	follow: Defold.hash(""),
+// 	followLerpY: 1,
+// 	followLerpX: 0,
+// 	followOffsetY: 0,
+// 	followOffsetX: 0,
+// 	go: hash("")
+// }
+// var camera:CameraControllerProperties = {}
+// class GameLogic extends CameraController<camera> {
 class GameLogic extends Script<GameLogicData> {
 	var code:Int;
 	var fmessage:String;
@@ -45,14 +57,14 @@ class GameLogic extends Script<GameLogicData> {
 				game_level = Tilemap.get_tile("/go#tilemap", "entities", x, y);
 			}
 		// Set camera to follow Horse
-		var follow:FollowOptions = {
-			lerp: 10.61,
-			offset: Vmath.vector3(0, 100, 0),
-			horizontal: true,
-			vertical: true,
-			immediate: false
-		}
-		Camera.follow(hash('/camera'), self._minnie, follow);
+		// var follow:FollowOptions = {
+		// 	lerp: 10.61,
+		// 	offset: Vmath.vector3(0, 100, 0),
+		// 	horizontal: true,
+		// 	vertical: true,
+		// 	immediate: false
+		// }
+		// Camera.follow(hash('/camera'), self._minnie, follow);
 
 		self.level = SaveLoad.get_all_saved_data().game_level;
 		load_level(self);
