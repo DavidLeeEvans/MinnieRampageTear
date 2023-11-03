@@ -2,7 +2,6 @@
 -lua main.lua
 -lib hxdefold
 -lib hxdefold-extensions
--lib dex:git:https://gitlab.com/haath/dex
 -dce full
 -D analyzer-optimize
 --macro include("", true, null, ["src"])
