@@ -16,24 +16,24 @@ weapon_nuclear_raygun	   = 3
 weapon_trained_cats        = 4
 shield_straight		   = 5
 weapon_axe_large    	   = 6
-weapon_dagger
-weapon_pole
-weapon_trained_ferrets
-weapon_boomerang
-weapon_flamethrower
-weapon_spear
-weapon_arrow
-weapon_bow_arrow
-weapon_hammer
-weapon_staff
-weapon_axe_blades
-weapon_bow
-weapon_longsword
-weapon_sword
-weapon_axe_double
-weapon_canopener
-weapon_machine_gun
-weapon_throwing_stars
+weapon_dagger              = 7 
+weapon_pole		   = 8
+weapon_trained_ferrets	   = 9
+weapon_boomerang	   = 10
+weapon_flamethrower        = 11
+weapon_spear 		   = 12
+weapon_arrow		   = 13
+weapon_bow_arrow	   = 14
+weapon_hammer		   = 15
+weapon_staff		   = 16
+weapon_axe_blades	   = 17
+weapon_bow		   = 18
+weapon_longsword	   = 19
+weapon_sword		   = 20
+weapon_axe_double	   = 21
+weapon_canopener	   = 22
+weapon_machine_gun	   = 23
+weapon_throwing_stars	   = 24
 */
 
 private typedef WeaponsData = {
