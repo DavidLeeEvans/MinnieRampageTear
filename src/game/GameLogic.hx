@@ -37,15 +37,19 @@ class GameLogic extends Script<GameLogicData> {
 
 	override function init(self:GameLogicData):Void {
 		Msg.post(".", GoMessages.acquire_input_focus);
+		self.run_game = true;
 		var fps = 30;
 		self._loaded = false;
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
 		// Stopped Here
 		map_bounds = Tilemap.get_bounds("/go#l");
-		for (x in map_bounds.x...map_bounds.w)
-			for (y in map_bounds.y...map_bounds.h) {
+		Defold.pprint('Mapx = ${map_bounds.w}');
+		Defold.pprint('Mapy = ${map_bounds.h}');
+		for (x in map_bounds.x...map_bounds.w + 1)
+			for (y in map_bounds.y...map_bounds.h + 1) {
 				game_level = Tilemap.get_tile("/go#l", "floor", x, y);
+				Defold.pprint('game_level is $game_level');
 				if (game_level != 0)
 					create_level_function(x, y, game_level);
 			}
@@ -96,7 +100,7 @@ class GameLogic extends Script<GameLogicData> {
 	}
 
 	private function create_level_function(x:Int, y:Int, tile:Int):Void {
-		trace('x = $x y = $y tile $tile');
+		Defold.pprint('x = $x y = $y tile $tile');
 		Factory.create('/go#ftile' + string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
 	}
 
