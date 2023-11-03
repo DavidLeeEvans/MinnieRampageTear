@@ -2,11 +2,9 @@ package game;
 
 import Defold.hash;
 import defold.Factory;
-import defold.Go.GoMessages;
 import defold.Go;
 import defold.Msg;
 import defold.Render.RenderMessages;
-import defold.Tilemap.TilemapBounds;
 import defold.Tilemap;
 import defold.Vmath;
 import defold.support.Script;
@@ -14,7 +12,6 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
-import dex.scripts.CameraController;
 
 private typedef GameLogicData = {
 	var run_game:Bool;
@@ -45,19 +42,20 @@ class GameLogic extends Script<GameLogicData> {
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
 		// Stopped Here
-		map_bounds = Tilemap.get_bounds("/go#tilemap");
+		map_bounds = Tilemap.get_bounds("/go#l");
 		for (x in map_bounds.x...map_bounds.w)
 			for (y in map_bounds.y...map_bounds.h) {
-				game_level = Tilemap.get_tile("/go#tilemap", "terrain", x, y);
+				game_level = Tilemap.get_tile("/go#l", "floor", x, y);
 				if (game_level != 0)
 					create_level_function(x, y, game_level);
 			}
 		// Now lets add the entities
-		map_bounds = Tilemap.get_bounds("/go#tilemap");
-		for (x in map_bounds.x...map_bounds.w)
-			for (y in map_bounds.y...map_bounds.h) {
-				game_level = Tilemap.get_tile("/go#tilemap", "entities", x, y);
-			}
+		//		map_bounds = Tilemap.get_bounds("/go#tilemap");
+		//		for (x in map_bounds.x...map_bounds.w)
+		//			for (y in map_bounds.y...map_bounds.h) {
+		//
+		// game_level = Tilemap.get_tile("/go#tilemap", "entities", x, y);
+
 		// Set camera to follow Horse
 		// var follow:FollowOptions = {
 		// 	lerp: 10.61,
@@ -67,9 +65,8 @@ class GameLogic extends Script<GameLogicData> {
 		// 	immediate: false
 		// }
 		// Camera.follow(hash('/camera'), self._minnie, follow);
-
-		self.level = SaveLoad.get_all_saved_data().game_level;
-		load_level(self);
+		// self.level = SaveLoad.get_all_saved_data().game_level;
+		// load_level(self);
 	}
 
 	override function update(self:GameLogicData, dt:Float):Void {
@@ -100,7 +97,7 @@ class GameLogic extends Script<GameLogicData> {
 
 	private function create_level_function(x:Int, y:Int, tile:Int):Void {
 		trace('x = $x y = $y tile $tile');
-		Factory.create('/go#fac_' + string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
+		Factory.create('/go#ftile' + string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
 	}
 
 	override function on_reload(self:GameLogicData):Void {}
