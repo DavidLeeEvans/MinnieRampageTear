@@ -32,7 +32,7 @@ class Antagonist extends Script<AntagonistData> {
 		return false;
 	}
 
-	override function final_(self:AtagonistData):Void {}
+	override function final_(self:AntagonistData):Void {}
 
 	override function on_reload(self:AntagonistData):Void {}
 }
