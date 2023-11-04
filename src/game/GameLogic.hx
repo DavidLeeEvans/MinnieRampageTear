@@ -112,7 +112,7 @@ class GameLogic extends Script<GameLogicData> {
 		var r:String = '';
 		if (v <= 9) {
 			r = '00' + Std.string(v);
-		} else if (v >= 10 || v <= 99) {
+		} else if (v >= 10 && v <= 99) {
 			r = '0' + Std.string(v);
 		} else {
 			r = Std.string(v);
