@@ -44,7 +44,7 @@ class GameLogic extends Script<GameLogicData> {
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
 		// Stopped Here
-		Defold.pprint(g.get());
+		Globals
 		map_bounds = Tilemap.get_bounds("/go#l");
 		Defold.pprint('Mapx = ${map_bounds.w}');
 		Defold.pprint('Mapy = ${map_bounds.h}');
