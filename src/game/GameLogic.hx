@@ -44,7 +44,6 @@ class GameLogic extends Script<GameLogicData> {
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
 		// Stopped Here
-		var g = defold.Sys.load("custom_bundles/spin_levelinfo00.txt");
 		Defold.pprint(g.get());
 		map_bounds = Tilemap.get_bounds("/go#l");
 		Defold.pprint('Mapx = ${map_bounds.w}');
