@@ -1,26 +1,24 @@
 package game;
 
-import Defold.hash;
-import defold.Go.GoMessages;
 import defold.Msg;
 import defold.support.Script;
-import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
+import lua.Lua;
 
 /*
 	shield_curved              = 0
-	weapon_axe 		   = 1
+	weapon_axe 		   		   = 1
 	weapon_chariot             = 2
 	weapon_nuclear_raygun	   = 3
 	weapon_trained_cats        = 4
-	shield_straight		   = 5
+	shield_straight		   	   = 5
 	weapon_axe_large    	   = 6
 	weapon_dagger              = 7 
-	weapon_pole		   = 8
+	weapon_pole		   		   = 8 // Next
 	weapon_trained_ferrets	   = 9
-	weapon_boomerang	   = 10
+	weapon_boomerang	  	   = 10
 	weapon_flamethrower        = 11
 	weapon_spear 		   = 12
 	weapon_arrow		   = 13
@@ -28,13 +26,13 @@ import defold.types.Url;
 	weapon_hammer		   = 15
 	weapon_staff		   = 16
 	weapon_axe_blades	   = 17
-	weapon_bow		   = 18
+	weapon_bow		   	   = 18
 	weapon_longsword	   = 19
 	weapon_sword		   = 20
 	weapon_axe_double	   = 21
 	weapon_canopener	   = 22
 	weapon_machine_gun	   = 23
-	weapon_throwing_stars	   = 24
+	weapon_throwing_stars  = 24
  */
 private typedef WeaponsData = {
 	@property(-1) var type:Int;
@@ -42,7 +40,7 @@ private typedef WeaponsData = {
 
 class Weapons extends Script<WeaponsData> {
 	override function init(self:WeaponsData) {
-		assert(self.type != -1, "!!!!!!! Cat type is not Set !!!!!!!!!!");
+		Lua.assert(self.type != -1, "!!!!!!! Cat type is not Set !!!!!!!!!!");
 	}
 
 	override function update(self:WeaponsData, dt:Float):Void {}
