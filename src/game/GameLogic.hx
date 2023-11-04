@@ -14,8 +14,8 @@ import defold.types.Message;
 import defold.types.Url;
 
 private typedef GameLogicData = {
+	@property(-1) var level:Int;
 	var run_game:Bool;
-	var level:Int;
 	var _minnie:Hash;
 	var _loaded:Bool;
 }
@@ -36,6 +36,7 @@ class GameLogic extends Script<GameLogicData> {
 	var fmessage:String;
 
 	override function init(self:GameLogicData):Void {
+		lua.Lua.assert(self.level != -1, "Level Not Set");
 		Msg.post(".", GoMessages.acquire_input_focus);
 		self.run_game = true;
 		var fps = 30;
@@ -101,14 +102,14 @@ class GameLogic extends Script<GameLogicData> {
 
 	private function create_level_function(x:Int, y:Int, tile:Int):Void {
 		Defold.pprint('x = $x y = $y tile $tile');
-		Factory.create('/go#ftile' + string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
+		Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
 	}
 
 	override function on_reload(self:GameLogicData):Void {}
 
 	private function load_level(self:GameLogicData):Void {}
 
-	private function string_create(v:Int):String {
+	private function three_string_create(v:Int):String {
 		var r:String = '';
 		if (v <= 9) {
 			r = '00' + Std.string(v);
