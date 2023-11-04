@@ -11,7 +11,6 @@ dependencies#2 = https://github.com/selimanac/defold-astar/archive/master.zip
 dependencies#3 = https://github.com/defold/extension-websocket/archive/master.zip
 dependencies#4 = https://github.com/defold/extension-fbinstant/archive/master.zip
 dependencies#5 = https://github.com/defold/extension-spine/archive/master.zip
-dependencies#6 = https://github.com/subsoap/defsave/archive/master.zip
 [bootstrap]
 main_collection = /game/levels/level00.collectionc
 render = /builtins/render/default.renderc
