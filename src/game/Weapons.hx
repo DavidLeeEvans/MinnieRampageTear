@@ -33,6 +33,7 @@ import lua.Lua;
 	weapon_canopener	   = 22
 	weapon_machine_gun	   = 23
 	weapon_throwing_stars  = 24
+	fist  = 25
  */
 private typedef WeaponsData = {
 	@property(-1) var type:Int;
