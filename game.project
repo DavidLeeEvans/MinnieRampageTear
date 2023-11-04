@@ -54,3 +54,6 @@ scale_mode = fit
 [collectionfactory]
 max_count = 256
 
+[factory]
+max_count = 256
+
