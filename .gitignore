@@ -8,7 +8,7 @@ bundle/HTML5
 bob_d9e9c49ab946c058f29a8b688c862d70f30e9c43.jar
 prodution_app.zip
 main.lua
-
+AppManifest.png
 local_server/RailRoadRunner.wasm
 local_server/RailRoadRunner_asmjs.js
 local_server/RailRoadRunner_wasm.js
