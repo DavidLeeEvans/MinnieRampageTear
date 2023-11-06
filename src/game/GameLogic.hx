@@ -11,7 +11,6 @@ import defold.support.Script;
 import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
-import defold.types.Quaternion;
 import defold.types.Url;
 import game.atomic.Globals;
 import lua.Math;
@@ -107,9 +106,10 @@ class GameLogic extends Script<GameLogicData> {
 
 	private function create_level_function(x:Int, y:Int, xwidth:Int, ywidth:Int, arr:Array<Array<Int>>, tile:Int):Void {
 		Defold.pprint('x = $x y = $y tile $tile');
+		lua.Lua.assert(x > 0 && x < xwidth);
+		lua.Lua.assert(y > 0 && y < ywidth);
 		final o = Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
-		// TODO stopped here.
-		switch (arr[x - 1][y - 1]) {
+		switch (arr[x - 1][ywidth - y]) {
 			case 0:
 				return;
 			case 1:
