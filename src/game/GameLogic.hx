@@ -12,7 +12,7 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
-import game.atomic.HudData.Globals;
+import game.atomic.Globals;
 
 private typedef GameLogicData = {
 	@property(-1) var level:Int;
@@ -45,7 +45,8 @@ class GameLogic extends Script<GameLogicData> {
 		var map_bounds:TilemapBounds;
 		var game_level:Int;
 		// Stopped Here
-		Defold.pprint(Globals.level00); // LEFT HERE!! !
+		Defold.pprint("--------------------------");
+		Defold.pprint(Globals.level00[15][0]);
 		map_bounds = Tilemap.get_bounds("/go#l");
 		Defold.pprint('Mapx = ${map_bounds.w}');
 		Defold.pprint('Mapy = ${map_bounds.h}');
