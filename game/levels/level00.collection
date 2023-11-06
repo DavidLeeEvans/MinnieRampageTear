@@ -36,8 +36,8 @@ collection_instances {
   id: "Minnie"
   collection: "/game/characters_props/Protagonist/Minnie.collection"
   position {
-    x: 144.0
-    y: 476.0
+    x: 906.0
+    y: 656.0
     z: 0.0
   }
   rotation {
