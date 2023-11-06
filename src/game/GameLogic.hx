@@ -109,7 +109,8 @@ class GameLogic extends Script<GameLogicData> {
 		lua.Lua.assert(x > 0 && x < xwidth);
 		lua.Lua.assert(y > 0 && y < ywidth);
 		final o = Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
-		switch (arr[x - 1][ywidth - y]) {
+		// switch (arr[x - 1][ywidth - y]) {
+		switch (arr[ywidth - y][x - 1]) {
 			case 0:
 				return;
 			case 1:
