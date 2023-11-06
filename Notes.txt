@@ -1,0 +1,1 @@
+For more advance rendering, look at dex Haxe Render  = Next game.
