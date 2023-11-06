@@ -11,8 +11,10 @@ import defold.support.Script;
 import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
+import defold.types.Quaternion;
 import defold.types.Url;
 import game.atomic.Globals;
+import lua.Math;
 
 private typedef GameLogicData = {
 	@property(-1) var level:Int;
@@ -55,7 +57,7 @@ class GameLogic extends Script<GameLogicData> {
 				game_level = Tilemap.get_tile("/go#l", "floor", x, y);
 				Defold.pprint('game_level is $game_level');
 				if (game_level != 0)
-					create_level_function(x, y, game_level);
+					create_level_function(x, y, 16, 16, Globals.level00, game_level);
 			}
 		// Now lets add the entities
 		//		map_bounds = Tilemap.get_bounds("/go#tilemap");
@@ -103,9 +105,26 @@ class GameLogic extends Script<GameLogicData> {
 		Msg.post(".", GoMessages.release_input_focus);
 	}
 
-	private function create_level_function(x:Int, y:Int, tile:Int):Void {
+	private function create_level_function(x:Int, y:Int, xwidth:Int, ywidth:Int, arr:Array<Array<Int>>, tile:Int):Void {
 		Defold.pprint('x = $x y = $y tile $tile');
-		Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
+		final o = Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
+		// TODO stopped here.
+		switch (arr[x - 1][y - 1]) {
+			case 0:
+				return;
+			case 1:
+				var r = Go.get_world_rotation(o);
+				r = r * Vmath.quat_rotation_z(Math.rad(90));
+				Go.set_rotation(r, o);
+			case 2:
+				var r = Go.get_world_rotation(o);
+				r = r * Vmath.quat_rotation_z(Math.rad(180));
+				Go.set_rotation(r, o);
+			case 3:
+				var r = Go.get_world_rotation(o);
+				r = r * Vmath.quat_rotation_z(Math.rad(270));
+				Go.set_rotation(r, o);
+		}
 	}
 
 	override function on_reload(self:GameLogicData):Void {}
@@ -117,6 +136,16 @@ class GameLogic extends Script<GameLogicData> {
 		if (v <= 9) {
 			r = '00' + Std.string(v);
 		} else if (v >= 10 && v <= 99) {
+			r = '0' + Std.string(v);
+		} else {
+			r = Std.string(v);
+		}
+		return (r);
+	}
+
+	private function two_string_create(v:Int):String {
+		var r:String = '';
+		if (v <= 9) {
 			r = '0' + Std.string(v);
 		} else {
 			r = Std.string(v);
