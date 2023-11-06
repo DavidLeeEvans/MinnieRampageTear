@@ -1,11 +1,15 @@
 package game;
 
-import defold.Msg;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 import lua.Lua;
+
+@:build(defold.support.MessageBuilder.build()) class WeaponsMessages {
+	var fire:{?targer:Hash};
+	var change_weapon:{type:Int};
+}
 
 /*
 	shield_curved              = 0
@@ -37,6 +41,8 @@ import lua.Lua;
  */
 private typedef WeaponsData = {
 	@property(-1) var type:Int;
+	@property(6.0) var delay:Float;
+	@property(10) var ammo:Int;
 }
 
 class Weapons extends Script<WeaponsData> {
