@@ -106,8 +106,8 @@ class GameLogic extends Script<GameLogicData> {
 
 	private function create_level_function(x:Int, y:Int, xwidth:Int, ywidth:Int, arr:Array<Array<Int>>, tile:Int):Void {
 		Defold.pprint('x = $x y = $y tile $tile');
-		lua.Lua.assert(x > 0 && x < xwidth);
-		lua.Lua.assert(y > 0 && y < ywidth);
+		lua.Lua.assert(x > 0 && x <= xwidth);
+		lua.Lua.assert(y > 0 && y <= ywidth);
 		final o = Factory.create('/go#ftile' + three_string_create(tile), Vmath.vector3(x * 64, y * 64, 0));
 		// switch (arr[x - 1][ywidth - y]) {
 		switch (arr[ywidth - y][x - 1]) {
@@ -115,15 +115,15 @@ class GameLogic extends Script<GameLogicData> {
 				return;
 			case 1:
 				var r = Go.get_world_rotation(o);
-				r = r * Vmath.quat_rotation_z(Math.rad(90));
+				r = r * Vmath.quat_rotation_z(Math.rad(-90));
 				Go.set_rotation(r, o);
 			case 2:
 				var r = Go.get_world_rotation(o);
-				r = r * Vmath.quat_rotation_z(Math.rad(180));
+				r = r * Vmath.quat_rotation_z(Math.rad(-180));
 				Go.set_rotation(r, o);
 			case 3:
 				var r = Go.get_world_rotation(o);
-				r = r * Vmath.quat_rotation_z(Math.rad(270));
+				r = r * Vmath.quat_rotation_z(Math.rad(-270));
 				Go.set_rotation(r, o);
 		}
 	}
