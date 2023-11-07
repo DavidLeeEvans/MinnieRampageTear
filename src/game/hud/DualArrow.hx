@@ -8,8 +8,22 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
+import defold.types.Vector3;
 
-private typedef DualArrowData = {}
+@:build(defold.support.HashBuilder.build()) class DualArrowHash {
+	var i0;
+	var i1;
+	var i2;
+	var i3;
+	var i4;
+	var i5;
+	var i6;
+}
+
+private typedef DualArrowData = {
+	var start:Vector3;
+	var end:Vector3;
+}
 
 @:build(defold.support.MessageBuilder.build()) class DualArrowMessage {
 	var press_up_down:{result:Bool};
