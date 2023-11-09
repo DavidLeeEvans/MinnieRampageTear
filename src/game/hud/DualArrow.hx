@@ -40,7 +40,14 @@ class DualArrow extends Script<DualArrowData> {
 	override function on_message<T>(self:DualArrowData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {
 			case DualArrowMessage.press_up_down:
+			// if(message.result)
 			case DualArrowMessage.on_off:
+				if (message.data) {
+					Msg.post(".", GoMessages.acquire_input_focus);
+					Msg.post(DualArrowHash.i0, GoMessages.disable);
+				} else {
+					Msg.post(".", GoMessages.release_input_focus);
+				}
 		}
 	}
 
