@@ -18,6 +18,7 @@ import defold.types.Vector3;
 	var i4;
 	var i5;
 	var i6;
+	var prompt;
 }
 
 private typedef DualArrowData = {
