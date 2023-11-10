@@ -46,12 +46,18 @@ class DualArrow extends Script<DualArrowData> {
 
 	override function update(self:DualArrowData, dt:Float):Void {
 		var pos = Camera.world_to_screen(Defold.hash("/camera"), Go.get_world_position("/Minnie/dual_arrow"));
-		var test:RenderMessageDrawLine = {
-			start_point: Vmath.vector3(pos.x, pos.y, 0),
-			end_point: Vmath.vector3(pos.x + self.top_pt.x, pos.y + self.top_pt.y, 0),
-			color: Vmath.vector4(1, 1, 1, 1)
+		// var test:RenderMessageDrawLine = {
+		// 	start_point: Vmath.vector3(pos.x, pos.y, 0),
+		// 	end_point: Vmath.vector3(pos.x + self.top_pt.x, pos.y + self.top_pt.y, 0),
+		// 	color: Vmath.vector4(1, 1, 1, 1)
+		// }
+		var glasses:RenderMessageDrawLine = {
+			start_point: Vmath.vector3(950, 760, 0),
+			end_point: Vmath.vector3(1000, 760, 0),
+			color: Vmath.vector4(0, 0, 0, 1)
 		}
-		Msg.post("@render:", RenderMessages.draw_line, test);
+
+		Msg.post("@render:", RenderMessages.draw_line, glasses);
 	}
 
 	override function on_message<T>(self:DualArrowData, message_id:Message<T>, message:T, sender:Url):Void {
