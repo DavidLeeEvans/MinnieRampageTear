@@ -40,21 +40,28 @@ class Touch extends Script<TouchData> {
 		switch (message_id) {
 			case PhysicsMessages.collision_response:
 				Defold.pprint("----- Touch Collision -----");
+				Defold.pprint(message);
 				self._working = true;
 		}
 	}
 
 	override function on_input(self:TouchData, action_id:Hash, action:ScriptOnInputAction):Bool {
 		if (action_id == hash("touch")) {
-			if (action.pressed) {
+			if (self._working) {
 				trace('Touch Press');
 				final _v = Vmath.vector3(action.x, action.y, 0);
 				final _pos = Camera.screen_to_world(hash("/camera"), _v);
 				Go.set_position(_pos, ".");
-			} else if (action.released) {
+			}
+			if (action.released) {
 				trace('Touch Released');
 				Go.set_position(Vmath.vector3(-100, -100, 0));
 				self._working = false;
+			}
+			if (action.pressed) {
+				final _v = Vmath.vector3(action.x, action.y, 0);
+				final _pos = Camera.screen_to_world(hash("/camera"), _v);
+				Go.set_position(_pos, ".");
 			}
 		}
 

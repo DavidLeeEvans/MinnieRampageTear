@@ -94,11 +94,11 @@ class GameLogic extends Script<GameLogicData> {
 	}
 
 	override function on_input(self:GameLogicData, action_id:Hash, action:ScriptOnInputAction):Bool {
-		if (action_id == hash("jump") || action_id == hash("touch")) {
-			Defold.pprint(' the action_id is $action_id');
-			Defold.pprint(' the action is $action');
-			Defold.pprint('----------------------------');
-			Defold.pprint(Camera.screen_to_world(hash("/camera"), Vmath.vector3(action.screen_x, action.screen_y, 0)));
+		if (action_id == hash("touch")) {
+			// Defold.pprint(' the action_id is $action_id');
+			// Defold.pprint(' the action is $action');
+			// Defold.pprint('----------------------------');
+			// Defold.pprint(Camera.screen_to_world(hash("/camera"), Vmath.vector3(action.screen_x, action.screen_y, 0)));
 		}
 		return false;
 	}
