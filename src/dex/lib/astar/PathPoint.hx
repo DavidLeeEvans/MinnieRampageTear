@@ -1,8 +1,7 @@
 package dex.lib.astar;
 
-typedef PathPoint =
-{
-    var x: Int;
+typedef PathPoint = {
+	var x:Int;
 
-    var y: Int;
+	var y:Int;
 }

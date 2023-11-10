@@ -1,130 +1,98 @@
 package dex.components;
 
-import defold.Msg;
-import defold.Physics.PhysicsMessageTriggerResponse;
-import defold.Physics.PhysicsMessages;
-import defold.types.Hash;
-import defold.types.Message;
-import defold.types.Url;
-import dex.systems.Time;
 import dex.wrappers.GameObject;
 
-using dex.util.extensions.ArrayEx;
+import defold.Msg;
+
+import defold.Physics.PhysicsMessageTriggerResponse;
+import defold.Physics.PhysicsMessages;
+
+import defold.types.Message;
+import defold.types.Url;
+import defold.types.Hash;
+
+private class GameObjectIterator {
+	var objects:Array<GameObject>;
+	var i:Int;
+
+	public inline function new(objects:Array<GameObject>) {
+		this.objects = objects;
+		i = 0;
+	}
+
+	public inline function hasNext():Bool {
+		while (i < objects.length && !objects[i].exists()) {
+			objects.splice(i, 1);
+		}
+
+		return i < objects.length;
+	}
+
+	public inline function next():GameObject {
+		return objects[i++];
+	}
+}
 
 /**
- * Component to be attached to an object with a trigger collider.
- *
- * This component keeps track of all other objects of the given groups that are
- * currently overlapping with the collider.
- */
-class RangeTrigger extends ScriptComponent
-{
-    public var onEnter: (object: GameObject) -> Void;
-    public var onExit: (object: GameObject) -> Void;
+	Component to be attached to an object with a trigger collider.
 
-    var objectsInRange: Array<GameObject>;
-    final ownGroup: Null<Hash>;
-    final targetGroups: Array<Hash>;
+	This component keeps track of all other objects of the given groups that are
+	currently overlapping with the collider.
+**/
+class RangeTrigger extends ScriptComponent {
+	public var objectsInRange(default, null):Array<GameObject>;
+	public var onEnter:(object:GameObject) -> Void;
+	public var onExit:(object:GameObject) -> Void;
 
-    /**
-     * Initialize a new trigger collider.
-     *
-     * @param ownGroup if `null`, all trigger interactions on this object will be tracked by this component;
-     *                 if a collision group is passed then only triggers from the collider with this group will be tracked
-     * @param targetGroups if `null`, all trigger interactions on this object will be tracked by this component;
-     *                     if a list of collision groups is passed, then only trigger interactions with these groups will be tracked
-     */
-    public function new(?ownGroup: Hash, ?targetGroups: Array<Hash>)
-    {
-        super();
+	var ownGroup:Hash;
+	var targetGroups:Array<Hash>;
 
-        this.ownGroup = ownGroup;
-        this.targetGroups = targetGroups;
-        onEnter = null;
-        onExit = null;
-    }
+	public function new(ownGroup:Hash, targetGroups:Array<Hash>) {
+		super();
 
-    override function init()
-    {
-        objectsInRange = [ ];
-    }
+		objectsInRange = new Array<GameObject>();
+		this.ownGroup = ownGroup;
+		this.targetGroups = targetGroups;
+	}
 
-    override function update(dt: Float)
-    {
-        if (Time.everyFrames(300))
-        {
-            // cleanup the list with some interval
-            objectsInRange = objectsInRange.filter(obj -> obj.exists());
-        }
-    }
+	public override function onMessage<TMessage>(messageId:Message<TMessage>, message:TMessage, sender:Url) {
+		switch messageId {
+			case PhysicsMessages.trigger_response:
+				{
+					var triggerMsg:PhysicsMessageTriggerResponse = cast message;
 
-    override function onMessage<TMessage>(messageId: Message<TMessage>, message: TMessage, sender: Url)
-    {
-        switch messageId
-        {
-            case PhysicsMessages.trigger_response:
-                {
-                    var triggerMsg: PhysicsMessageTriggerResponse = cast message;
-                    if (ownGroup != null && triggerMsg.own_group != ownGroup)
-                    {
-                        // message is not for this component
-                        return;
-                    }
+					if (triggerMsg.own_group == ownGroup && targetGroups.indexOf(triggerMsg.other_group) > -1) {
+						if (triggerMsg.enter) {
+							objectsInRange.push(cast triggerMsg.other_id);
 
-                    if (targetGroups != null && !targetGroups.contains(triggerMsg.other_group))
-                    {
-                        // object that entered the collider is not tracked by this component
-                        return;
-                    }
+							if (onEnter != null) {
+								onEnter(cast triggerMsg.other_id);
+							}
+						} else {
+							objectsInRange.remove(cast triggerMsg.other_id);
 
-                    // handle object
-                    if (triggerMsg.enter)
-                    {
-                        objectsInRange.push(triggerMsg.other_id);
+							if (onExit != null) {
+								onExit(cast triggerMsg.other_id);
+							}
+						}
+					}
+				}
+		}
+	}
 
-                        if (onEnter != null)
-                        {
-                            onEnter(triggerMsg.other_id);
-                        }
-                    }
-                    else
-                    {
-                        objectsInRange.remove(triggerMsg.other_id);
+	/**
+	 * Sends the given message to all objects currently in the trigger range.
+	 */
+	public inline function broadcast<TMessage>(messageId:Message<TMessage>, message:TMessage = null) {
+		for (object in objectsInRange) {
+			Msg.post(object, messageId, message);
+		}
+	}
 
-                        if (onExit != null)
-                        {
-                            onExit(triggerMsg.other_id);
-                        }
-                    }
-                }
-        }
-    }
-
-    /**
-     * Sends a message to all existing objects currently in the trigger range.
-     */
-    public inline function broadcast<TMessage>(messageId: Message<TMessage>, ?message: TMessage)
-    {
-        for (obj in objectsInRange)
-        {
-            if (obj.exists())
-            {
-                Msg.post(obj, messageId, message);
-            }
-        }
-    }
-
-    /**
-     * Loop over all existing objects currently in the trigger range.
-     */
-    public inline function forEach(fn: GameObject->Void)
-    {
-        for (obj in objectsInRange)
-        {
-            if (obj.exists())
-            {
-                fn(obj);
-            }
-        }
-    }
+	/**
+	 * Returns a safe iterator, that cleans the list from deleted objects while iterating through it.
+	 */
+	public inline function iterator():Iterator<GameObject> {
+		return new GameObjectIterator(objectsInRange);
+	}
 }

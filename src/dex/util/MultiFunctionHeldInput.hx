@@ -1,6 +1,7 @@
 package dex.util;
 
 import defold.types.Hash;
+
 import defold.support.ScriptOnInputAction;
 
 /**
@@ -30,92 +31,80 @@ import defold.support.ScriptOnInputAction;
  * 4. Walking further, enters in interaction range of another item.
  * 5. Picks up the item.
  */
-class MultiFunctionHeldInput<T: EnumValue> extends ScriptComponent
-{
-    /**
-     * The currently triggered function.
-     * Will be `null` when no function is currently triggered.
-     */
-    public var trigger(default, null): T;
+class MultiFunctionHeldInput<T:EnumValue> extends ScriptComponent {
+	/**
+	 * The currently triggered function.
+	 * Will be `null` when no function is currently triggered.
+	 */
+	public var trigger(default, null):T;
 
-    /**
-     * This property will be `true` while the input action is held,
-     * on the frame when the `trigger` property transitions from `null` to a value.
-     */
-    public var justTriggered(default, null): Bool;
+	/**
+	 * This property will be `true` while the input action is held,
+	 * on the frame when the `trigger` property transitions from `null` to a value.
+	 */
+	public var justTriggered(default, null):Bool;
 
-    var selectedFunction: T;
+	var selectedFunction:T;
 
-    var actionId: Hash;
-    var determineFunction: Void->T;
+	var actionId:Hash;
+	var determineFunction:Void->T;
 
-    /**
-     * Initializes a new multi-function input wrapper.
-     *
-     * @param actionId the hash of the action the input is mapped to
-     * @param determineFunction a callback function, which will be called once on every frame when the
-     * mapped input action is held, and should return the appropriate function
-     */
-    public function new(actionId: Hash, determineFunction: Void->T)
-    {
-        super();
+	/**
+	 * Initializes a new multi-function input wrapper.
+	 *
+	 * @param actionId the hash of the action the input is mapped to
+	 * @param determineFunction a callback function, which will be called once on every frame when the
+	 * mapped input action is held, and should return the appropriate function
+	 */
+	public function new(actionId:Hash, determineFunction:Void->T) {
+		super();
 
-        trigger = null;
-        justTriggered = false;
+		trigger = null;
+		justTriggered = false;
 
-        selectedFunction = null;
+		selectedFunction = null;
 
-        this.actionId = actionId;
-        this.determineFunction = determineFunction;
-    }
+		this.actionId = actionId;
+		this.determineFunction = determineFunction;
+	}
 
-    override function onBeforeInput()
-    {
-        trigger = null;
-        justTriggered = false;
-    }
+	override function onBeforeInput() {
+		trigger = null;
+		justTriggered = false;
+	}
 
-    override function onInput(actionId: Hash, action: ScriptOnInputAction): Bool
-    {
-        if (actionId != this.actionId)
-        {
-            // irrelevant input
-            return false;
-        }
+	override function onInput(actionId:Hash, action:ScriptOnInputAction):Bool {
+		if (actionId != this.actionId) {
+			// irrelevant input
+			return false;
+		}
 
-        /**
-         * Set selected function on press, and clear it on release.
-         */
-        var func: T = determineFunction();
+		/**
+		 * Set selected function on press, and clear it on release.
+		 */
+		var func:T = determineFunction();
 
-        if (selectedFunction == null)
-        {
-            selectedFunction = func;
-        }
-        else if (action.released)
-        {
-            selectedFunction = null;
-        }
+		if (selectedFunction == null) {
+			selectedFunction = func;
+		} else if (action.released) {
+			selectedFunction = null;
+		}
 
-        /**
-         * Propagate the selected function to the trigger property,
-         * only while the action is held and the determined function is the same as the one selected.
-         */
-        if (selectedFunction != null && func == selectedFunction)
-        {
-            if (trigger == null)
-            {
-                justTriggered = true;
-            }
+		/**
+		 * Propagate the selected function to the trigger property,
+		 * only while the action is held and the determined function is the same as the one selected.
+		 */
+		if (selectedFunction != null && func == selectedFunction) {
+			if (trigger == null) {
+				justTriggered = true;
+			}
 
-            trigger = selectedFunction;
-        }
-        else
-        {
-            trigger = null;
-        }
+			trigger = selectedFunction;
+		} else {
+			trigger = null;
+		}
 
-        // always consume the input while the input is held
-        return true;
-    }
+		// always consume the input while the input is held
+		return true;
+	}
 }

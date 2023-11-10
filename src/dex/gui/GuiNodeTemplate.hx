@@ -1,6 +1,7 @@
 package dex.gui;
 
 import defold.types.HashOrString;
+
 import dex.wrappers.GuiNode;
 
 /**
@@ -8,11 +9,9 @@ import dex.wrappers.GuiNode;
  * and only exposes the clone functions.
  */
 @:forward(clone, cloneTree)
-abstract GuiNodeTemplate(GuiNode)
-{
-    public function new(?id: HashOrString)
-    {
-        this = new GuiNode(id);
-        this.disable();
-    }
+abstract GuiNodeTemplate(GuiNode) {
+	public function new(?id:HashOrString) {
+		this = new GuiNode(id);
+		this.disable();
+	}
 }

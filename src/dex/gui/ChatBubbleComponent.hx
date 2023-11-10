@@ -1,67 +1,57 @@
 package dex.gui;
 
-import defold.Msg;
 import defold.Vmath;
-import defold.types.Hash;
+
 import defold.types.Vector3;
-import dex.scripts.CameraController;
+
+import dex.lib.orthographic.Camera;
+
 import dex.wrappers.GameObject;
+
+import defold.Msg;
+
+import defold.types.Hash;
 
 using dex.util.extensions.Vector3Ex;
 
+class ChatBubbleComponent extends ScriptComponent {
+	var guiId:Hash;
+	var cameraId:Hash;
+	var active:Bool;
 
-class ChatBubbleComponent extends ScriptComponent
-{
-    final guiId: Hash;
-    final go: GameObject;
+	var previousScreenPosition:Vector3;
 
-    var active: Bool;
+	public inline function new(guiId:Hash, cameraId:Hash) {
+		super();
 
-    var previousScreenPosition: Vector3;
+		this.guiId = guiId;
+		this.cameraId = cameraId;
+		active = false;
+	}
 
-    public function new(guiId: Hash)
-    {
-        super();
+	override function init() {
+		previousScreenPosition = Vmath.vector3();
+	}
 
-        this.guiId = guiId;
-        go = GameObject.self();
+	override function update(dt:Float) {
+		super.update(dt);
 
-        active = false;
-    }
+		if (active) {
+			var screenPosition:Vector3 = Camera.world_to_screen(cameraId, GameObject.self.getPosition());
 
-    override function init()
-    {
-        previousScreenPosition = Vmath.vector3();
-    }
+			if (!screenPosition.equals(previousScreenPosition)) {
+				Msg.post(guiId, ChatBubbleMessages.chat_bubble_update, {position: GameObject.self.getPosition(), object: GameObject.ownId()});
 
-    override function update(dt: Float)
-    {
-        super.update(dt);
+				previousScreenPosition = screenPosition;
+			}
+		}
+	}
 
-        if (active)
-        {
-            var screenPosition: Vector3 = CameraController.worldToScreen(go.getPosition());
+	public inline function activate() {
+		active = true;
+	}
 
-            if (!screenPosition.equals(previousScreenPosition))
-            {
-                Msg.post(guiId, ChatBubbleMessages.chat_bubble_update,
-                    {
-                        position: go.getPosition(),
-                        object: GameObject.self()
-                    });
-
-                previousScreenPosition = screenPosition;
-            }
-        }
-    }
-
-    public inline function activate()
-    {
-        active = true;
-    }
-
-    public inline function deactivate()
-    {
-        active = false;
-    }
+	public inline function deactivate() {
+		active = false;
+	}
 }

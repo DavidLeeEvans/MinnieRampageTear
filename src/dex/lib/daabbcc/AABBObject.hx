@@ -1,5 +1,3 @@
 package dex.lib.daabbcc;
 
-extern class AABBObject
-{
-}
+extern class AABBObject {}

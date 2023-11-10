@@ -1,321 +1,273 @@
 package dex.platformer;
 
+import dex.platformer.hashes.PlatformerMessages;
+
 import defold.types.Message;
 import defold.types.Url;
-import dex.platformer.Animations.*;
-import dex.platformer.hashes.PlatformerAnimations;
-import dex.platformer.hashes.PlatformerMessages;
-import dex.util.DexError;
-import dex.util.Timer;
 
-using dex.util.extensions.FloatEx;
+import dex.platformer.hashes.PlatformerAnimations;
+import dex.platformer.Animations.*;
 
 /**
-    Behavior for terminating a jump when input is released.
+	Behavior for terminating a jump when input is released.
 **/
-enum JumpTerminationTechnique
-{
-    VelocityClamp;
-    VelocityReset;
-    GravityScale;
-    None;
+enum JumpTerminationTechnique {
+	VelocityClamp;
+	VelocityReset;
+	GravityScale;
+	None;
 }
 
-enum abstract HorizontalInput(Float) from Float to Float
-{
-    var None = 0.0;
-    var Left = -1.0;
-    var Right = 1.0;
+@:enum
+abstract HorizontalInput(Float) from Float to Float {
+	var None = 0.0;
+	var Left = -1.0;
+	var Right = 1.0;
 
-    @:op(A * B) inline function mult(f: Float): Float
-        return this * f;
+	@:op(A * B) public inline function mult(f:Float):Float
+		return this * f;
 }
 
-class CharacterMover extends Mover
-{
-    /** The maximum height reachable by jumping. */
-    public var jumpHeight: Float;
+class CharacterMover extends Mover {
+	/** The maximum height reachable by jumping. **/
+	public var jumpHeight:Float;
 
-    /** The minimum jump height; defaults to the same as jumpHeight. */
-    public var jumpMinHeight: Float;
+	/** The minimum height reachable by jumping. Defaults to `20%` of `jumpHeight`. **/
+	public var jumpMinHeight:Float;
 
-    /** The initial upwards velocity at the moment of jumping. */
-    public var jumpInitialVelocity: Float;
+	/** The initial upwards velocity at the moment of jumping. **/
+	public var jumpInitialVelocity:Float;
 
-    /** The time it takes to reach `jumpHeight`. */
-    public var jumpTimeToApex: Float;
+	/** The time it takes to reach `jumpHeight`. **/
+	public var jumpTimeToApex:Float;
 
-    /** The amount of time (in seconds) that the jump can be held for a higher climb. */
-    public var jumpHoldTime: Float = 0.0;
+	/** The behavior to use for terminating a jump when input is released. **/
+	public var jumpTerminationTechnique:JumpTerminationTechnique = VelocityClamp;
 
-    /** The behavior to use for terminating a jump when input is released. */
-    public var jumpTerminationTechnique: JumpTerminationTechnique = GravityScale;
+	/** Scale to apply to the gravity acceleration when descending. **/
+	public var gravityFallScale:Float = 1.0;
 
-    /** Scale to apply to the gravity acceleration when descending. */
-    public var gravityFallScale: Float = 1.0;
+	/** Applied input on the x-axis. **/
+	public var horizontalInput:HorizontalInput;
 
-    /** Applied input on the x-axis. **/
-    public var horizontalInput: HorizontalInput;
+	var jumpReleased:Bool;
+	var jumpQueuedTimer:Float;
+	var gravityDisableTimer:Float;
+	var forceWalkTimer:Float;
 
-    /** Threshold of the x-axis velocity, after which the animation switches from `Walk` to `Run`. Only applicable if `Run` is among the `availableAnimations`. **/
-    public var velocityRunThreshold: Float = 16;
+	override function init() {
+		horizontalInput = None;
+		jumpReleased = false;
+		jumpQueuedTimer = 0;
+		gravityDisableTimer = 0;
+		forceWalkTimer = 0;
 
-    var jumpTerminalVelocity: Float;
+		configurePhysics();
 
-    var jumpHoldTimer: Timer;
-    var jumpReleased: Bool;
-    var jumpQueuedTimer: Timer;
-    var gravityDisableTimer: Timer;
-    var forceWalkTimer: Timer;
+		super.init();
+	}
 
-    override function init()
-    {
-        jumpHoldTimer = 0;
-        jumpReleased = false;
-        jumpQueuedTimer = 0;
-        gravityDisableTimer = 0;
-        forceWalkTimer = 0;
-        horizontalInput = None;
+	override function update(dt:Float) {
+		// Check if jumping should be terminated.
+		if (jumpReleased) {
+			jumpRelease();
+		}
 
-        configurePhysics();
+		// Update timers.
+		if (jumpQueuedTimer > 0)
+			jumpQueuedTimer -= dt;
+		if (gravityDisableTimer > 0)
+			gravityDisableTimer -= dt;
+		if (forceWalkTimer > 0) {
+			forceWalkTimer -= dt;
 
-        super.init();
-    }
+			if (forceWalkTimer <= 0) {
+				horizontalInput = None;
+			}
+		}
 
-    override function update(dt: Float)
-    {
-        // check if jumping should be terminated
-        if (jumpReleased)
-        {
-            updateVelocityJumpTermination();
-        }
+		// Cancel input if control is disabled.
+		if (!hasMoveControl() && forceWalkTimer <= 0) {
+			horizontalInput = None;
+		}
 
-        // update timers
-        jumpQueuedTimer.tick(dt);
-        gravityDisableTimer.tick(dt);
-        if (jumpHoldTimer.tick(dt))
-        {
-            jumpRelease();
-        }
-        if (forceWalkTimer.tick(dt))
-        {
-            horizontalInput = None;
-        }
+		// Apply horizontal input.
+		switch horizontalInput {
+			// No input.
+			case None:
+				{
+					velocity.x = velocity.x * (1 / (1 + 10 * effectiveDamping() * dt));
+				}
 
-        // cancel input if control is disabled
-        if (!hasMoveControl() && forceWalkTimer.hasElapsed())
-        {
-            horizontalInput = None;
-        }
+			// Grounded with input and direction change.
+			case _ if (grounded && horizontalInput * velocity.x < 0):
+				{
+					velocity.x = horizontalInput * effectiveAcceleration() * dt;
+				}
 
-        // Apply horizontal input.
-        switch horizontalInput
-        {
-            // No input.
-            case None:
-                {
-                    velocity.x = velocity.x * (1 / (1 + 10 * effectiveDamping() * dt));
-                }
+			// Grounded with input.
+			case _ if (grounded):
+				{
+					velocity.x += horizontalInput * effectiveAcceleration() * dt;
 
-            // Grounded with input and direction change.
-            case _ if (grounded && horizontalInput * velocity.x < 0):
-                {
-                    velocity.x = horizontalInput * effectiveAcceleration() * dt;
-                }
+					if (Math.abs(velocity.x) > Math.abs(horizontalInput * groundSpeed)) {
+						velocity.x = horizontalInput * groundSpeed;
+					}
+				}
 
-            // Grounded with input.
-            case _ if (grounded):
-                {
-                    velocity.x = (velocity.x + horizontalInput * effectiveAcceleration() * dt).clamp(-groundSpeed, groundSpeed);
-                }
+			// In the air with input.
+			case _ if (!grounded):
+				{
+					velocity.x = horizontalInput * Math.max(airSpeed, Math.abs(velocity.x));
+				}
 
-            // In the air with input.
-            case _ if (!grounded):
-                {
-                    velocity.x = horizontalInput * Math.max(airSpeed, Math.abs(velocity.x));
-                }
+			case _:
+		}
 
-            case _:
-        }
+		// Update animation according to input.
+		if (availableAnimations & Run && animations[Walk] == PlatformerAnimations.walk && Math.abs(horizontalInput) >= 0.8) {
+			animations[Walk] = PlatformerAnimations.run;
+		} else if (animations[Walk] == PlatformerAnimations.run && Math.abs(horizontalInput) < 0.8) {
+			animations[Walk] = PlatformerAnimations.walk;
+		}
 
-        // Update animation according to input.
-        if (availableAnimations & Run && animations[ Walk ] == PlatformerAnimations.walk && Math.abs(velocity.x) >= velocityRunThreshold)
-        {
-            animations[ Walk ] = PlatformerAnimations.run;
-        }
-        else if (animations[ Walk ] == PlatformerAnimations.run && Math.abs(velocity.x) < velocityRunThreshold)
-        {
-            animations[ Walk ] = PlatformerAnimations.walk;
-        }
+		super.update(dt);
+	}
 
-        super.update(dt);
-    }
+	override function onMessage<TMessage>(messageId:Message<TMessage>, message:TMessage, sender:Url) {
+		super.onMessage(messageId, message, sender);
 
-    override function onMessage<TMessage>(messageId: Message<TMessage>, message: TMessage, sender: Url)
-    {
-        super.onMessage(messageId, message, sender);
+		switch messageId {
+			case PlatformerMessages.walk:
+				{
+					var walkMsg:WalkMessage = cast message;
 
-        switch messageId
-        {
-            case PlatformerMessages.walk:
-                {
-                    var walkMsg: WalkMessage = cast message;
+					horizontalInput = walkMsg.distance > 0 ? walkMsg.speedFactor : -walkMsg.speedFactor;
+					forceWalkTimer = getTimeToWalk(walkMsg.distance, walkMsg.speedFactor);
+				}
+		}
+	}
 
-                    horizontalInput = walkMsg.distance > 0 ? walkMsg.speedFactor : -walkMsg.speedFactor;
-                    forceWalkTimer = getTimeToWalk(walkMsg.distance, walkMsg.speedFactor);
-                }
-        }
-    }
+	/**
+		Calculates the time needed to cover the given ground distance.
 
-    /**
-        Calculates the time needed to cover the given ground distance.
+		Will be based on the mover's configured ground speed and effective acceleration.
 
-        Will be based on the mover's configured ground speed and effective acceleration.
+		This assumes an initial speed of `0`.
 
-        This assumes an initial speed of `0`.
+		@param distance The distance to cover.
+		@param speedFactor Multiplier applied to the input. Used to obtain a calculation for
+		an absolute value of `horizontalInput` different from `1`.
+	**/
+	public inline function getTimeToWalk(distance:Float, speedFactor:Float = 1):Float {
+		distance = Math.abs(distance);
 
-        @param distance The distance to cover.
-        @param speedFactor Multiplier applied to the input. Used to obtain a calculation for
-        an absolute value of `horizontalInput` different from `1`.
-    **/
-    public inline function getTimeToWalk(distance: Float, speedFactor: Float = 1): Float
-    {
-        distance = Math.abs(distance);
+		var timeToMaxSpeed:Float = groundSpeed / effectiveAcceleration();
+		var distanceToMaxSpeed:Float = effectiveAcceleration() * timeToMaxSpeed * timeToMaxSpeed / 2;
 
-        var timeToMaxSpeed: Float = groundSpeed / effectiveAcceleration();
-        var distanceToMaxSpeed: Float = effectiveAcceleration() * timeToMaxSpeed * timeToMaxSpeed / 2;
+		var totalTime:Float = timeToMaxSpeed;
 
-        var totalTime: Float = timeToMaxSpeed;
+		if (distanceToMaxSpeed < distance) {
+			totalTime += (distance - distanceToMaxSpeed) / groundSpeed;
+		}
 
-        if (distanceToMaxSpeed < distance)
-        {
-            totalTime += (distance - distanceToMaxSpeed) / groundSpeed;
-        }
+		return totalTime;
+	}
 
-        return totalTime;
-    }
+	public inline function jump() {
+		if (grounded) {
+			grounded = false;
+			velocity.y = jumpInitialVelocity;
+			jumpReleased = false;
 
-    public inline function jumpPress()
-    {
-        if (grounded)
-        {
-            grounded = false;
-            jumpReleased = false;
-            velocity.y = jumpInitialVelocity;
+			animationState.set(PlatformerAnimations.jump, Lock | Force);
+			animationState.set(PlatformerAnimations.roll, Queue);
+		} else {
+			// Queue the jump action for when grounded.
+			jumpQueuedTimer = 0.5;
+		}
+	}
 
-            jumpHoldTimer = jumpHoldTime + 1e-6;
+	override function onGrounded() {
+		super.onGrounded();
 
-            if (availableAnimations & Jump)
-            {
-                animationState.set(animations[ Jump ], Lock | Force);
-            }
-            if (availableAnimations & Roll)
-            {
-                animationState.set(animations[ Roll ], Queue);
-            }
-        }
-        else
-        {
-            // queue the jump action for when grounded
-            jumpQueuedTimer = 0.5;
-        }
-    }
+		if (jumpQueuedTimer > 0) {
+			jump();
+		}
+	}
 
-    public inline function jumpRelease()
-    {
-        jumpQueuedTimer.tick(0.25);
+	public inline function jumpRelease() {
+		if (jumpQueuedTimer > 0) {
+			jumpQueuedTimer -= 0.25;
+			return;
+		}
 
-        jumpReleased = true;
+		jumpReleased = false;
 
-        if (jumpTerminationTechnique == GravityScale)
-        {
-            gravityScale = gravityFallScale;
-        }
-    }
+		switch jumpTerminationTechnique {
+			case VelocityClamp if (velocity.y > jumpTerminationVelocity()):
+				{
+					velocity.y = jumpTerminationVelocity();
+				}
 
-    override function onGrounded()
-    {
-        super.onGrounded();
+			case VelocityReset if (velocity.y > 0):
+				{
+					velocity.y = 0;
+				}
 
-        if (jumpQueuedTimer)
-        {
-            jumpQueuedTimer = 0;
-            jumpPress();
-        }
-    }
+			case GravityScale:
+				{
+					// Case handled in effectiveGravityAcceleration().
+				}
 
-    inline function updateVelocityJumpTermination()
-    {
-        switch jumpTerminationTechnique
-        {
-            case VelocityClamp if (velocity.y > jumpTerminalVelocity):
-                {
-                    velocity.y = jumpTerminalVelocity;
-                }
+			case _:
+				{
+					// Check again next frame.
+					jumpReleased = true;
+				}
+		}
+	}
 
+	public function configurePhysics() {
+		if (gravityAcceleration == null) {
+			gravityAcceleration = (2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
+		}
+		if (jumpInitialVelocity == null) {
+			jumpInitialVelocity = Math.sqrt(2 * gravityAcceleration * jumpHeight);
+		}
+		if (jumpTimeToApex == null) {
+			jumpTimeToApex = jumpInitialVelocity / gravityAcceleration;
+		}
+		if (jumpMinHeight == null) {
+			jumpMinHeight = 0.2 * jumpHeight;
+		}
+		// TODO: jumpHeight
+	}
 
-            case VelocityReset if (velocity.y > 0):
-                {
-                    velocity.y = 0;
-                }
+	override function effectiveGravityAcceleration():Float {
+		if (velocity.y < 0 || (jumpReleased && jumpTerminationTechnique == GravityScale)) {
+			// Falling.
+			if (gravityDisableTimer > 0) {
+				// Gravity currently disabled.
+				return 0;
+			} else {
+				return gravityScale * gravityFallScale * gravityAcceleration;
+			}
+		} else {
+			// Rising.
+			return gravityScale * gravityAcceleration;
+		}
+	}
 
+	public inline function disableGravity(duration:Float) {
+		gravityDisableTimer = duration;
+	}
 
-            case GravityScale:
-                {
-                    // case handled in jumpRelease()
-                }
+	inline function jumpTerminationVelocity():Float {
+		return Math.sqrt((jumpInitialVelocity * jumpInitialVelocity) - 2 * effectiveGravityAcceleration() * (jumpHeight - jumpMinHeight));
+	}
 
-
-            default:
-        }
-    }
-
-    function configurePhysics()
-    {
-        DexError.assert(jumpHeight != null, 'jumpHeight value must be configured');
-        DexError.assert(jumpInitialVelocity != null || jumpTimeToApex != null || gravityAcceleration != null,
-            'one of [jumpInitialVelocity, jumpTimeToApex or gravityAcceleration] must be configured'
-        );
-
-        if (gravityAcceleration == null)
-        {
-            gravityAcceleration = (2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
-        }
-        if (jumpInitialVelocity == null)
-        {
-            jumpInitialVelocity = Math.sqrt(2 * gravityAcceleration * jumpHeight);
-        }
-        if (jumpTimeToApex == null)
-        {
-            jumpTimeToApex = jumpInitialVelocity / gravityAcceleration;
-        }
-
-        if (jumpMinHeight == null)
-        {
-            jumpMinHeight = jumpHeight;
-        }
-
-        jumpTerminalVelocity = Math.sqrt(jumpInitialVelocity * jumpInitialVelocity + 2 * gravityAcceleration * (jumpHeight - jumpMinHeight));
-    }
-
-    override function effectiveGravityAcceleration(): Float
-    {
-        if (gravityDisableTimer)
-        {
-            // gravity currently disabled
-            return 0;
-        }
-
-        return gravityScale * gravityAcceleration;
-    }
-
-    public inline function disableGravity(duration: Float)
-    {
-        gravityDisableTimer = duration;
-    }
-
-    inline function hasJumpTerminated(): Bool
-    {
-        return jumpReleased || jumpHoldTimer.hasElapsed();
-    }
+	inline function jumpTerminationTime():Float {
+		return jumpTimeToApex - (2 * (jumpHeight - jumpMinHeight) / (jumpInitialVelocity + jumpTerminationVelocity()));
+	}
 }

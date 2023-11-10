@@ -6,6 +6,4 @@ package dex.util.types;
  * any way (the underlying type is still Dynamic and Std.isOfType() checks +
  * casts are necessary).
  */
-abstract OneOfTwo<T1, T2>(Dynamic) from T1 from T2 to T1 to T2
-{
-}
+abstract OneOfTwo<T1, T2>(Dynamic) from T1 from T2 to T1 to T2 {}

@@ -1,13 +1,12 @@
 package dex.lib.astar;
 
 @:multiReturn
-extern class AstarResult
-{
-    var result: Result;
+extern class AstarResult {
+	var result:Result;
 
-    var size: Int;
+	var size:Int;
 
-    var totalCost: Float;
+	var totalCost:Float;
 
-    var path: Array<PathPoint>;
+	var path:Array<PathPoint>;
 }

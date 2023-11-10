@@ -1,6 +1,5 @@
 package dex.tiled.infinite;
 
-typedef InfiniteTiledMap =
-{
-    var layers: Array<InfiniteTiledMapLayer>;
+typedef InfiniteTiledMap = {
+	var layers:Array<InfiniteTiledMapLayer>;
 }
