@@ -1,7 +1,7 @@
 package game.hud;
 
 import Defold.hash;
-import defold.Go.GoMessages;
+import defold.Go;
 import defold.Msg;
 import defold.support.Script;
 import defold.support.ScriptOnInputAction;
@@ -24,6 +24,10 @@ import defold.types.Vector3;
 private typedef DualArrowData = {
 	var start:Vector3;
 	var end:Vector3;
+	@property(11.1) var length:Float;
+	@property var target:Hash;
+	@property var top_pt:Vector3;
+	@property var bottom_pt:Vector3;
 }
 
 @:build(defold.support.MessageBuilder.build()) class DualArrowMessage {
@@ -53,17 +57,23 @@ class DualArrow extends Script<DualArrowData> {
 	}
 
 	override function on_input(self:DualArrowData, action_id:Hash, action:ScriptOnInputAction):Bool {
-		if (action_id == hash("jump") || action_id == hash("touch")) {
-			if (action.pressed)
-				trace('Dual Arrow Pressed');
-			else if (action.released)
-				trace('Dual Arrow Released');
+		if (action_id == hash("touch")) {
+			final bounding_box = Go.get_world_position();
+			Defold.pprint(bounding_box);
+			Defold.pprint(' screenx ${action.screen_x} screeny${action.screen_y}');
+			if (action.pressed) {
+				trace('================================ Dual Arrow Pressed========================================');
+			} else if (action.released) {
+				trace('=============================== Dual Arrow Released =======================================');
+			}
 		}
 
 		return true;
 	}
 
-	override function final_(self:DualArrowData):Void {}
+	override function final_(self:DualArrowData):Void {
+		Msg.post(".", GoMessages.release_input_focus);
+	}
 
 	override function on_reload(self:DualArrowData):Void {}
 }
