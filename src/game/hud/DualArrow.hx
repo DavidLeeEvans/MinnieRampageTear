@@ -55,12 +55,12 @@ class DualArrow extends Script<DualArrowData> {
 	override function on_input(self:DualArrowData, action_id:Hash, action:ScriptOnInputAction):Bool {
 		if (action_id == hash("jump") || action_id == hash("touch")) {
 			if (action.pressed)
-				trace('jump(data)');
+				trace('Dual Arrow Pressed');
 			else if (action.released)
-				trace('abort_jump(data)');
+				trace('Dual Arrow Released');
 		}
 
-		return false;
+		return true;
 	}
 
 	override function final_(self:DualArrowData):Void {}
