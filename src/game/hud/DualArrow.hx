@@ -60,7 +60,9 @@ class DualArrow extends Script<DualArrowData> {
 		if (action_id == hash("touch")) {
 			final bounding_box = Go.get_world_position();
 			Defold.pprint(bounding_box);
-			Defold.pprint(' screenx ${action.screen_x} screeny${action.screen_y}');
+			Defold.pprint('screenx ${action.screen_x} screeny ${action.screen_y}');
+			Defold.pprint('touch x ${action.x} touch y ${action.y}');
+
 			if (action.pressed) {
 				trace('================================ Dual Arrow Pressed========================================');
 			} else if (action.released) {
