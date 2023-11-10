@@ -3,12 +3,16 @@ package game.hud;
 import Defold.hash;
 import defold.Go;
 import defold.Msg;
+import defold.Render.RenderMessageDrawLine;
+import defold.Render.RenderMessages;
+import defold.Vmath;
 import defold.support.Script;
 import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 import defold.types.Vector3;
+import dex.lib.orthographic.Camera;
 
 @:build(defold.support.HashBuilder.build()) class DualArrowHash {
 	var i0;
@@ -40,7 +44,15 @@ class DualArrow extends Script<DualArrowData> {
 		Msg.post(".", GoMessages.acquire_input_focus);
 	}
 
-	override function update(self:DualArrowData, dt:Float):Void {}
+	override function update(self:DualArrowData, dt:Float):Void {
+		var pos = Camera.world_to_screen(Defold.hash("/camera"), Go.get_world_position("/Minnie/dual_arrow"));
+		var test:RenderMessageDrawLine = {
+			start_point: Vmath.vector3(pos.x, pos.y, 0),
+			end_point: Vmath.vector3(pos.x + self.top_pt.x, pos.y + self.top_pt.y, 0),
+			color: Vmath.vector4(1, 1, 1, 1)
+		}
+		Msg.post("@render:", RenderMessages.draw_line, test);
+	}
 
 	override function on_message<T>(self:DualArrowData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {
@@ -62,7 +74,10 @@ class DualArrow extends Script<DualArrowData> {
 			Defold.pprint(bounding_box);
 			Defold.pprint('screenx ${action.screen_x} screeny ${action.screen_y}');
 			Defold.pprint('touch x ${action.x} touch y ${action.y}');
-
+			Defold.pprint(' the action_id is $action_id');
+			Defold.pprint(' the action is $action');
+			Defold.pprint('----------- World Screen -----------------');
+			Defold.pprint(Camera.screen_to_world(hash("/camera"), Vmath.vector3(action.screen_x, action.screen_y, 0)));
 			if (action.pressed) {
 				trace('================================ Dual Arrow Pressed========================================');
 			} else if (action.released) {

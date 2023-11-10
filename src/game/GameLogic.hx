@@ -12,6 +12,7 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
+import dex.lib.orthographic.Camera;
 import game.atomic.Globals;
 import lua.Math;
 
@@ -96,6 +97,8 @@ class GameLogic extends Script<GameLogicData> {
 		if (action_id == hash("jump") || action_id == hash("touch")) {
 			Defold.pprint(' the action_id is $action_id');
 			Defold.pprint(' the action is $action');
+			Defold.pprint('----------------------------');
+			Defold.pprint(Camera.screen_to_world(hash("/camera"), Vmath.vector3(action.screen_x, action.screen_y, 0)));
 		}
 		return false;
 	}
