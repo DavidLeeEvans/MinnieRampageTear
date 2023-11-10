@@ -1,1 +1,2 @@
-For more advance rendering, look at dex Haxe Render  = Next game.
+Later: For more advance rendering, look at dex Haxe Render  = Next game.
+[ ] Orthocamera screen position to World position.
