@@ -1,7 +1,5 @@
 package game.hud;
 
-import defold.Go;
-import defold.Msg;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
@@ -20,14 +18,14 @@ import defold.types.Message;
 private typedef DualArrowData = {}
 
 @:build(defold.support.MessageBuilder.build()) class DualArrowMessage {
-	var press_up_down:{result:Bool};
-	var on_off:{data:Bool};
+	var set_length:{data:Int};
+	var set_angle:{data:Float};
+	var on_off:{status:Bool};
+	var set_position:{data:Float};
 }
 
 class DualArrow extends Script<DualArrowData> {
-	override function init(self:DualArrowData) {
-		Msg.post(".", GoMessages.acquire_input_focus);
-	}
+	override function init(self:DualArrowData) {}
 
 	override function update(self:DualArrowData, dt:Float):Void {
 		// var pos = Camera.world_to_screen(Defold.hash("/camera"), Go.get_position("/Minnie/dual_arrow"));
