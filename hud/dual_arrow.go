@@ -1,5 +1,5 @@
 embedded_components {
-  id: "sprite"
+  id: "prompt"
   type: "sprite"
   data: "tile_set: \"/hud/dual_arrow.atlas\"\n"
   "default_animation: \"prompt\"\n"
