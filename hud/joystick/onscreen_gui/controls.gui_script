@@ -13,10 +13,10 @@ function init(self)
 		msg.post("player", "move", touch)
 	end)
 	onscreen.register_button(self.button_a, nil, function(action, node, touch)
-		msg.post("player", "laser", touch)
+		msg.post("player", "button_a", touch)
 	end)
 	onscreen.register_button(self.button_b, nil, function(action, node, touch)
-		msg.post("player", "bomb", touch)
+		msg.post("player", "button_b", touch)
 	end)
 end
 
