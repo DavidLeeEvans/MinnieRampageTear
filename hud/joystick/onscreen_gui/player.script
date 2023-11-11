@@ -10,8 +10,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("button_a") then
 		if message.released then
 			print("button_a")
-			end)
-		end
+			end
 	elseif message_id == hash("button_b") then
 		if message.released then
 			print("button_b")
