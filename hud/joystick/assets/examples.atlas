@@ -14,18 +14,6 @@ images {
   image: "/hud/joystick/assets/images/blue_button07.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
-images {
-  image: "/hud/joystick/assets/images/hitman1_gun.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/hud/joystick/assets/images/laserBlue01.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/hud/joystick/assets/images/playerShip3_red.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
 margin: 0
 extrude_borders: 2
 inner_padding: 0
