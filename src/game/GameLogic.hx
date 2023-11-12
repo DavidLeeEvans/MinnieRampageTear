@@ -18,7 +18,7 @@ import lua.Math;
 private typedef GameLogicData = {
 	@property(-1) var level:Int;
 	@property(-1) var climate:Int;
-	var run_game:Bool;
+	var run_pause_game:Bool;
 	var _minnie:Hash;
 	var _loaded:Bool;
 }
@@ -42,7 +42,7 @@ class GameLogic extends Script<GameLogicData> {
 		lua.Lua.assert(self.level != -1, "Level Not Set");
 		lua.Lua.assert(self.climate != -1, "Climate Not Set");
 		Msg.post(".", GoMessages.acquire_input_focus);
-		self.run_game = true;
+		self.run_pause_game = true;
 		var fps = 30;
 		self._loaded = false;
 		var map_bounds:TilemapBounds;
@@ -81,7 +81,7 @@ class GameLogic extends Script<GameLogicData> {
 	}
 
 	override function update(self:GameLogicData, dt:Float):Void {
-		if (self.run_game) {
+		if (self.run_pause_game) {
 			Msg.post("@render:", RenderMessages.clear_color, {color: Vmath.vector4(95 / 256, 129 / 256, 161 / 256, 1)});
 		} else {
 			// Game has started
