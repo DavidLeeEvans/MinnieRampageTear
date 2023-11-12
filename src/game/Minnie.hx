@@ -26,11 +26,11 @@ class Minnie extends Script<MinnieData> {
 	override function on_message<T>(self:MinnieData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {
 			case ControlMessage.button_a:
-				Defold.pprint("Button A pressed");
+				Defold.pprint("Minnie.hx Button A pressed");
 			case ControlMessage.button_b:
-				Defold.pprint("Button B pressed");
+				Defold.pprint("Minnie.hx Button B pressed");
 			case ControlMessage.move:
-				Defold.pprint('move $message');
+				Defold.pprint('Minnie.hx move $message');
 		}
 	}
 
