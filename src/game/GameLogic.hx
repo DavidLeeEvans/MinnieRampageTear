@@ -12,12 +12,12 @@ import defold.support.ScriptOnInputAction;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
-import dex.lib.orthographic.Camera;
 import game.atomic.Globals;
 import lua.Math;
 
 private typedef GameLogicData = {
 	@property(-1) var level:Int;
+	@property(-1) var climate:Int;
 	var run_game:Bool;
 	var _minnie:Hash;
 	var _loaded:Bool;
@@ -40,6 +40,7 @@ class GameLogic extends Script<GameLogicData> {
 
 	override function init(self:GameLogicData):Void {
 		lua.Lua.assert(self.level != -1, "Level Not Set");
+		lua.Lua.assert(self.climate != -1, "Climate Not Set");
 		Msg.post(".", GoMessages.acquire_input_focus);
 		self.run_game = true;
 		var fps = 30;
