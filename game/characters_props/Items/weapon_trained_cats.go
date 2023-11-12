@@ -12,9 +12,4 @@ components {
     z: 0.0
     w: 1.0
   }
-  properties {
-    id: "type"
-    value: "4.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
 }

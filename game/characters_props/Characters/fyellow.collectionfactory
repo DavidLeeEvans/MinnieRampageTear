@@ -1,3 +1,3 @@
-prototype: "/game/characters_props/Characters/fyellow.collection"
+prototype: "/game/characters_props/Characters/yellow.collection"
 load_dynamically: false
 dynamic_prototype: false
