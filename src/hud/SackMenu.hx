@@ -1,9 +1,9 @@
 package hud;
 
-import Defold.hash;
 import defold.Go.GoMessages;
 import defold.Gui;
 import defold.Msg;
+import defold.Sound;
 import defold.Vmath;
 import defold.support.GuiScript;
 import defold.support.ScriptOnInputAction;
@@ -34,9 +34,10 @@ class SackMenu extends GuiScript<SackMenuData> {
 	override function update(self:SackMenuData, dt:Float):Void {}
 
 	override function on_input(self:SackMenuData, action_id:Hash, action:ScriptOnInputAction):Bool {
-		if (action_id == hash("touch")) {
-			// TODO Selections
-		}
+		if (Gui.pick_node(self.exit, action.x, action.y)) {
+			Sound.play('/sounds#click');
+			Msg.post("#", SackMenuMessage.on_off_screen, {data: false});
+		} // TODO else if inventory cat
 		return false;
 	}
 
