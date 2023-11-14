@@ -1,10 +1,12 @@
 package game;
 
+import defold.Msg;
 import defold.Vmath;
 import defold.support.Script;
 import defold.types.Message;
 import defold.types.Url;
 import defold.types.Vector3;
+import hud.SackMenu.SackMenuMessage;
 
 @:build(defold.support.MessageBuilder.build()) class ControlMessage {
 	var button_a:{release:Bool}; // WMD Weapon Menu
@@ -27,6 +29,7 @@ class Minnie extends Script<MinnieData> {
 		switch (message_id) {
 			case ControlMessage.button_a:
 				Defold.pprint("Minnie.hx Button A pressed");
+				Msg.post("/go#sack_menu", SackMenuMessage.on_off_screen, {data: true});
 			case ControlMessage.button_b:
 				Defold.pprint("Minnie.hx Button B pressed");
 			case ControlMessage.move:
