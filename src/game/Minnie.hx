@@ -34,7 +34,7 @@ private typedef ControlData = {
 }
 
 private typedef MinnieData = {
-	var speed:Vector3;
+	@property var speed:Vector3;
 }
 
 class Minnie extends Script<MinnieData> {
@@ -43,7 +43,12 @@ class Minnie extends Script<MinnieData> {
 	}
 
 	override function update(self:MinnieData, dt:Float):Void {
-		Go.set_position(Go.get_position() + self.speed * dt);
+		final _pos = Go.get_world_position();
+		Defold.pprint("-----------------------------------");
+		Defold.pprint(_pos);
+		Defold.pprint(self.speed);
+		final _test = Vmath.vector3(-10, 0, 0);
+		Go.set_position(_pos + _test * dt);
 	}
 
 	override function on_message<T>(self:MinnieData, message_id:Message<T>, message:T, sender:Url):Void {
@@ -56,20 +61,19 @@ class Minnie extends Script<MinnieData> {
 				Defold.pprint('Minnie.hx Button B pressed $message');
 			case ControlMessage.analog_released:
 				Defold.pprint('Minnie.hx analog_released $message');
-				self.speed.x = 0;
-				self.speed.y = 0;
 			case ControlMessage.analog_pressed:
 				Defold.pprint('Minnie.hx analog_pressed $message.');
 			case ControlMessage.analog_moved:
 				Defold.pprint('Minnie.hx  analog_moved $message');
-				self.speed.x = message.x * 200;
-				self.speed.y = message.y * 200;
+			// self.speed.x = message.x * 200;
+			// self.speed.y = message.y * 200;
 			case ControlMessage.move:
 				if (message.pressed) {
-					Defold.pprint(message.pressed);
+					Defold.pprint('Minnie.hx Press move x = ${message.x} y = ${message.y}');
 					self.speed.x = message.x;
 					self.speed.y = message.y;
 				} else if (message.released) {
+					Defold.pprint('Minnie.hx Released move x = ${message.x} y = ${message.y}');
 					Defold.pprint(message.released);
 					self.speed.x = 0;
 					self.speed.y = 0;
