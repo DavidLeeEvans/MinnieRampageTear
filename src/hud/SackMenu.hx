@@ -26,6 +26,7 @@ private typedef SackMenuData = {
 	var on_off_screen:{data:Bool};
 	var on_off_screen_instant:{data:Bool};
 	var toggle_on_off_screen;
+	var item_select_rotate;
 	var item_select:{data:Int};
 }
 
@@ -59,6 +60,11 @@ class SackMenu extends GuiScript<SackMenuData> {
 
 	override function on_message<T>(self:SackMenuData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {
+			//
+			//
+			// MENU Disaster Control
+			//
+			//
 			case SackMenuMessage.on_off_screen:
 				if (message.data) {
 					Gui.animate(self.panel, GuiAnimateProprty.PROP_POSITION, Vmath.vector3(330, 545, 0), GuiEasing.EASING_LINEAR, 1.0, 0,
@@ -83,12 +89,21 @@ class SackMenu extends GuiScript<SackMenuData> {
 							self.on_off_screen = false;
 						});
 				}
-			case SackMenuMessage.item_select:
+			//
+			//
+			// WMD Weapon Selections
+			//
+			//
+			case SackMenuMessage.item_select_rotate:
+				self.wmdindex++;
+				if (self.wmdindex > self.int_wmd.length)
+					self.wmdindex = 0;
+				Defold.pprint(self.string_wmd[self.wmdindex]);
 				final _pos = Go.get_world_position("/Minnie/entity");
 				final _rot = Go.get_world_rotation("/Minnie/entity");
 				if (self.hcurrent_wmd != null)
 					Go.delete(self.hcurrent_wmd);
-				switch (message.data) {
+				switch (self.wmdindex) {
 					case 0:
 						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 1:
@@ -142,13 +157,8 @@ class SackMenu extends GuiScript<SackMenuData> {
 					case 25:
 				}
 				Go.set_parent(self.hcurrent_wmd, "/Minnie/entity", true);
-
+			case SackMenuMessage.item_select:
 			case SackMenuMessage.toggle_on_off_screen:
-				self.wmdindex++;
-				if (self.wmdindex > self.int_wmd.length)
-					self.wmdindex = 0;
-				Defold.pprint(self.string_wmd[self.wmdindex]);
-				Msg.post("#", SackMenuMessage.item_select, {data: self.wmdindex});
 		}
 	}
 
