@@ -84,39 +84,64 @@ class SackMenu extends GuiScript<SackMenuData> {
 						});
 				}
 			case SackMenuMessage.item_select:
-				final _pos = Go.get_world_position("");
-				final _rot = Go.get_world_rotation("");
+				final _pos = Go.get_world_position("/Minnie/entity");
+				final _rot = Go.get_world_rotation("/Minnie/entity");
 				if (self.hcurrent_wmd != null)
 					Go.delete(self.hcurrent_wmd);
 				switch (message.data) {
 					case 0:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 1:
+						self.hcurrent_wmd = Factory.create("weapon_axe", _pos, _rot);
 					case 2:
+						self.hcurrent_wmd = Factory.create("weapon_chariot", _pos, _rot);
 					case 3:
+						self.hcurrent_wmd = Factory.create("weapon_nuclear_raygun", _pos, _rot);
 					case 4:
+						self.hcurrent_wmd = Factory.create("weapon_trained_cats", _pos, _rot);
 					case 5:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot); // TODO stopped here
 					case 6:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 7:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 8:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 9:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 10:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 11:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 12:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 13:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 14:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 15:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 16:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 17:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 18:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 19:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 20:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 21:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 22:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 23:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 24:
+						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 25:
 				}
-				self.hcurrent_wmd = Factory.create()
+				Go.set_parent(self.hcurrent_wmd, "/Minnie/entity", true);
 
 			case SackMenuMessage.toggle_on_off_screen:
 				self.wmdindex++;
