@@ -1,7 +1,7 @@
 package hud;
 
 import defold.Factory;
-import defold.Go;
+// import defold.Go;
 import defold.Gui;
 import defold.Msg;
 import defold.Sound;
@@ -32,7 +32,7 @@ private typedef SackMenuData = {
 
 class SackMenu extends GuiScript<SackMenuData> {
 	override function init(self:SackMenuData) {
-		Msg.post(".", GoMessages.acquire_input_focus);
+		// Msg.post(".", GoMessages.acquire_input_focus); TODO needed??
 		Msg.post("#", SackMenuMessage.on_off_screen_instant, {data: false});
 		//
 		self.wmdindex = 0;
@@ -99,10 +99,10 @@ class SackMenu extends GuiScript<SackMenuData> {
 				if (self.wmdindex > self.int_wmd.length)
 					self.wmdindex = 0;
 				Defold.pprint(self.string_wmd[self.wmdindex]);
-				final _pos = Go.get_world_position("/Minnie/entity");
-				final _rot = Go.get_world_rotation("/Minnie/entity");
+				final _pos = Go.get_world_position("/Minnie/entity"); // TODO pos callback  MESSAGE
+				final _rot = Go.get_world_rotation("/Minnie/entity"); // TODO rot callback  MESSAGE
 				if (self.hcurrent_wmd != null)
-					Go.delete(self.hcurrent_wmd);
+					Go.delete(self.hcurrent_wmd); // TODO send a WMD delete message
 				switch (self.wmdindex) {
 					case 0:
 						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
@@ -156,14 +156,14 @@ class SackMenu extends GuiScript<SackMenuData> {
 						self.hcurrent_wmd = Factory.create("shield_curve", _pos, _rot);
 					case 25:
 				}
-				Go.set_parent(self.hcurrent_wmd, "/Minnie/entity", true);
+				Go.set_parent(self.hcurrent_wmd, "/Minnie/entity", true); // GO SET PARENT WMD MESSAGE
 			case SackMenuMessage.item_select:
 			case SackMenuMessage.toggle_on_off_screen:
 		}
 	}
 
 	override function final_(self:SackMenuData):Void {
-		Msg.post(".", GoMessages.release_input_focus);
+		// Msg.post(".", GoMessages.release_input_focus); //TODO Needed?
 	}
 
 	override function on_reload(self:SackMenuData):Void {}

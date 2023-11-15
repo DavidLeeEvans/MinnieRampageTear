@@ -59,6 +59,7 @@ class Minnie extends Script<MinnieData> {
 				Msg.post("/go#sack_menu", SackMenuMessage.on_off_screen, {data: true});
 			case ControlMessage.button_b:
 				Defold.pprint('Minnie.hx Button B pressed $message');
+				Msg.post("/go#sack_menu", SackMenuMessage.item_select_rotate);
 			case ControlMessage.analog_released:
 				Defold.pprint('Minnie.hx analog_released $message');
 			case ControlMessage.analog_pressed:
