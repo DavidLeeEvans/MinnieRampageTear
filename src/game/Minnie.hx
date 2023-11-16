@@ -63,6 +63,7 @@ class Minnie extends Script<MinnieData> {
 
 	override function on_message<T>(self:MinnieData, message_id:Message<T>, message:T, sender:Url):Void {
 		// Defold.pprint('UNIVERSAL id = $message_id  msg = $message');
+		// Need to debounce buttons
 		switch (message_id) {
 			case ControlMessage.button_a:
 				Defold.pprint('Minnie.hx Button A pressed $message');
