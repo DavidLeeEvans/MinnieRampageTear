@@ -24,13 +24,13 @@ private typedef GameLogicData = {
 }
 
 // private var test:CameraControllerProperties = {
-// 	center: Vmath.vector3(0, 0, 0),
-// 	follow: Defold.hash(""),
-// 	followLerpY: 1,
-// 	followLerpX: 0,
-// 	followOffsetY: 0,
-// 	followOffsetX: 0,
-// 	go: hash("")
+//     center: Vmath.vector3(0, 0, 0),
+//     follow: Defold.hash(""),
+//     followLerpY: 1,
+//     followLerpX: 0,
+//     followOffsetY: 0,
+//     followOffsetX: 0,
+//     go: hash("")
 // }
 // var camera:CameraControllerProperties = {}
 // class GameLogic extends CameraController<camera> {
@@ -61,19 +61,19 @@ class GameLogic extends Script<GameLogicData> {
 					create_level_function(x, y, 16, 16, Globals.level00, game_level);
 			}
 		// Now lets add the entities
-		//		map_bounds = Tilemap.get_bounds("/go#tilemap");
-		//		for (x in map_bounds.x...map_bounds.w)
-		//			for (y in map_bounds.y...map_bounds.h) {
+		//        map_bounds = Tilemap.get_bounds("/go#tilemap");
+		//        for (x in map_bounds.x...map_bounds.w)
+		//            for (y in map_bounds.y...map_bounds.h) {
 		//
 		// game_level = Tilemap.get_tile("/go#tilemap", "entities", x, y);
 
 		// Set camera to follow Horse
 		// var follow:FollowOptions = {
-		// 	lerp: 10.61,
-		// 	offset: Vmath.vector3(0, 100, 0),
-		// 	horizontal: true,
-		// 	vertical: true,
-		// 	immediate: false
+		//     lerp: 10.61,
+		//     offset: Vmath.vector3(0, 100, 0),
+		//     horizontal: true,
+		//     vertical: true,
+		//     immediate: false
 		// }
 		// Camera.follow(hash('/camera'), self._minnie, follow);
 		// self.level = SaveLoad.get_all_saved_data().game_level;
