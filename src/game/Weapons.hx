@@ -1,5 +1,6 @@
 package game;
 
+import defold.Go;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
@@ -8,7 +9,7 @@ import lua.Lua;
 
 @:build(defold.support.MessageBuilder.build()) class WeaponsMessages {
 	var fire:{?targer:Hash};
-	var change_weapon:{type:Int};
+	var delete_weapon;
 }
 
 /*
@@ -53,7 +54,11 @@ class Weapons extends Script<WeaponsData> {
 	override function update(self:WeaponsData, dt:Float):Void {}
 
 	override function on_message<T>(self:WeaponsData, message_id:Message<T>, message:T, sender:Url):Void {
-		switch (message_id) {}
+		switch (message_id) {
+			case WeaponsMessages.fire:
+			case WeaponsMessages.delete_weapon:
+				Go.delete();
+		}
 	}
 
 	override function final_(self:WeaponsData):Void {}
