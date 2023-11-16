@@ -13,6 +13,7 @@ import hud.GuiSackMenu.GuiSackMenuMessage;
 
 private typedef MinnieData = {
 	@property var speed:Vector3;
+	var _wmd:Hash;
 }
 
 private typedef ControlData = {
@@ -28,6 +29,7 @@ private typedef ControlData = {
 	var send_rot;
 	var receive_pos:{pos:Vector3};
 	var receive_rot:{rot:Quaternion};
+	var set_wmd:{data:Hash}; // TODO research this dle
 }
 
 @:build(defold.support.MessageBuilder.build()) class ControlMessage {
@@ -91,6 +93,9 @@ class Minnie extends Script<MinnieData> {
 				Msg.post(sender, MinnieMessage.receive_pos, {pos: Go.get_world_position()});
 			case MinnieMessage.send_rot:
 				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_world_rotation()});
+			case MinnieMessage.set_wmd:
+				self._wmd = message.data; // TODO might not be correcty??
+				Go.set_parent(self._wmd, ".", true);
 		}
 	}
 
