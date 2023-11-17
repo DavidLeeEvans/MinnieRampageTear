@@ -1,4 +1,4 @@
-package game.hud;
+package hud;
 
 import defold.Go;
 import defold.Msg;

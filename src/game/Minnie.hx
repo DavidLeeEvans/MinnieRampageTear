@@ -13,7 +13,8 @@ import hud.GuiSackMenu.GuiSackMenuMessage;
 
 private typedef MinnieData = {
 	@property var speed:Vector3;
-	var _wmd:Hash;
+	var _active_button_a:Bool;
+	var _active_button_b:Bool;
 }
 
 private typedef ControlData = {
@@ -50,6 +51,8 @@ private typedef ControlData = {
 class Minnie extends Script<MinnieData> {
 	override function init(self:MinnieData) {
 		self.speed = Vmath.vector3(0, 0, 0);
+		self._active_button_a = true;
+		self._active_button_b = true;
 	}
 
 	override function update(self:MinnieData, dt:Float):Void {
@@ -62,15 +65,28 @@ class Minnie extends Script<MinnieData> {
 	}
 
 	override function on_message<T>(self:MinnieData, message_id:Message<T>, message:T, sender:Url):Void {
-		// Defold.pprint('UNIVERSAL id = $message_id  msg = $message');
-		// Need to debounce buttons
+		Defold.pprint("--------------");
+		Defold.pprint(message);
 		switch (message_id) {
 			case ControlMessage.button_a:
-				Defold.pprint('Minnie.hx Button A pressed $message');
-				Msg.post("/go#sack_menu", GuiSackMenuMessage.on_off_screen, {data: true});
+				if (!message.release)
+					if (self._active_button_a) {
+						Defold.pprint('Minnie.hx Button A  released $message');
+						Msg.post("/go#sack_menu", GuiSackMenuMessage.on_off_screen, {data: true});
+						self._active_button_a = false;
+					} else {
+						self._active_button_a = true;
+					}
 			case ControlMessage.button_b:
-				Defold.pprint('Minnie.hx Button B pressed $message');
-				Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate);
+				if (!message.release)
+					if (self._active_button_b) {
+						Defold.pprint('Minnie.hx Button B released $message');
+						Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate);
+						self._active_button_b = false;
+					} else {
+						self._active_button_b = true;
+					}
+
 			case ControlMessage.analog_released:
 				Defold.pprint('Minnie.hx analog_released $message');
 			case ControlMessage.analog_pressed:
@@ -95,8 +111,7 @@ class Minnie extends Script<MinnieData> {
 			case MinnieMessage.send_rot:
 				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_world_rotation()});
 			case MinnieMessage.set_wmd:
-				self._wmd = message.data; // TODO might not be correcty??
-				Go.set_parent(self._wmd, ".", true);
+				Go.set_parent(message.data, ".", true);
 		}
 	}
 
