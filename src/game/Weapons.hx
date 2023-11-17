@@ -22,7 +22,7 @@ import lua.Lua;
 	weapon_axe_large           = 6
 	weapon_dagger              = 7 
 	weapon_pole                = 8 // Next
-	weapon_trained_ferrets     = 9
+	weapon_trained_cats_ferrets  = 9
 	weapon_boomerang           = 10
 	weapon_flamethrower        = 11
 	weapon_spear               = 12
