@@ -1,5 +1,6 @@
 package hud;
 
+import Defold.hash;
 import defold.Factory;
 // import defold.Go;
 import defold.Gui;
@@ -39,7 +40,6 @@ private typedef GuiSackMenuData = {
 
 class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 	override function init(self:GuiSackMenuData) {
-		// Msg.post(".", GoMessages.acquire_input_focus); TODO needed??
 		Msg.post("#", GuiSackMenuMessage.on_off_screen_instant, {data: false});
 		//
 		self.wmdindex = 0;
@@ -58,10 +58,11 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 	override function update(self:GuiSackMenuData, dt:Float):Void {}
 
 	override function on_input(self:GuiSackMenuData, action_id:Hash, action:ScriptOnInputAction):Bool {
-		if (Gui.pick_node(self.exit, action.x, action.y)) {
-			Sound.play('/sounds#click');
-			Msg.post("#", GuiSackMenuMessage.on_off_screen, {data: false});
-		} // TODO else if inventory cat
+		if (action_id == hash("touch") && action.pressed)
+			if (Gui.pick_node(self.exit, action.x, action.y)) {
+				Sound.play('/sounds#click');
+				Msg.post("#", GuiSackMenuMessage.on_off_screen, {data: false});
+			} // TODO else if inventory cat
 		return false;
 	}
 
@@ -109,7 +110,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_pos);
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_rot);
 				if (self.hcurrent_wmd != null)
-					Msg.post(self.hcurrent_wmd, WeaponsMessages.delete_weapon); // TODO send a WMD delete message
+					Msg.post(self.hcurrent_wmd, WeaponsMessages.delete_weapon);
 				switch (self.wmdindex) {
 					case 0:
 						self.hcurrent_wmd = Factory.create("shield_curve", self._mpos, self._mrot);
@@ -173,9 +174,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 		}
 	}
 
-	override function final_(self:GuiSackMenuData):Void {
-		// Msg.post(".", GoMessages.release_input_focus); //TODO Needed?
-	}
+	override function final_(self:GuiSackMenuData):Void {}
 
 	override function on_reload(self:GuiSackMenuData):Void {}
 }
