@@ -33,6 +33,14 @@ private typedef ControlData = {
 	var id:Hash;
 }
 
+private typedef ButtonData = {
+	var id:Hash;
+	var x:Float;
+	var y:Float;
+	var pressed:Bool;
+	var released:Bool;
+}
+
 @:build(defold.support.MessageBuilder.build()) class MinnieMessage {
 	var send_pos;
 	var send_rot;
@@ -42,8 +50,10 @@ private typedef ControlData = {
 }
 
 @:build(defold.support.MessageBuilder.build()) class ControlMessage {
-	var button_a:{release:Bool}; // WMD Weapon Menu
-	var button_b:{release:Bool}; // Fire Weapon !!
+	// var button_a:{data:ButtonData}; // WMD Weapon Menu
+	// var button_b:{data:ButtonData}; // Fire Weapon !!
+	var button_a:ButtonData; // WMD Weapon Menu
+	var button_b:ButtonData; // Fire Weapon !!
 	//
 	var move:ControlData; // Assembly Move Vehicle
 
@@ -65,35 +75,34 @@ class Minnie extends Script<MinnieData> {
 
 	override function update(self:MinnieData, dt:Float):Void {
 		final _pos = Go.get_world_position();
-		Defold.pprint("------------ y2k like testing -----------------------");
-		Defold.pprint(_pos);
-		Defold.pprint(self.speed);
-		final _test = Vmath.vector3(-10, 0, 0);
-		Go.set_position(_pos + _test * dt);
+		// Defold.pprint("------------ y2k like testing -----------------------");
+		// Defold.pprint(_pos);
+		// Defold.pprint(self.speed);
+		// final _test = Vmath.vector3(-10, 0, 0);
+		// Go.set_position(_pos + _test * dt);
 	}
 
 	override function on_message<T>(self:MinnieData, message_id:Message<T>, message:T, sender:Url):Void {
-		Defold.pprint("--------------");
-		Defold.pprint(message);
 		switch (message_id) {
 			case ControlMessage.button_a:
-				if (!message.release)
-					if (self._active_button_a) {
-						Defold.pprint('Minnie.hx Button A  released $message');
-						Msg.post("/go#sack_menu", GuiSackMenuMessage.on_off_screen, {data: true});
-						self._active_button_a = false;
-					} else {
-						self._active_button_a = true;
-					}
+				if (message.pressed && self._active_button_a) {
+					Defold.pprint('Minnie.hx Button A  released $message');
+					Msg.post("/go#sack_menu", GuiSackMenuMessage.on_off_screen, {data: true});
+					self._active_button_a = false;
+				}
+				if (message.released)
+					self._active_button_a = true;
+
 			case ControlMessage.button_b:
-				if (!message.release)
-					if (self._active_button_b) {
-						Defold.pprint('Minnie.hx Button B released $message');
-						Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate);
-						self._active_button_b = false;
-					} else {
-						self._active_button_b = true;
-					}
+				if (message.pressed && self._active_button_b) {
+					Defold.pprint('Minnie.hx Button B press $message');
+					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate);
+					self._active_button_b = false;
+				}
+				if (message.released) {
+					Defold.pprint("Released");
+					self._active_button_b = true;
+				}
 
 			case ControlMessage.analog_released:
 				Defold.pprint('Minnie.hx analog_released $message');
