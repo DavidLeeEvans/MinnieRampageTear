@@ -39,8 +39,8 @@ class GameLogic extends Script<GameLogicData> {
 	var fmessage:String;
 
 	override function init(self:GameLogicData):Void {
-		lua.Lua.assert(self.level != -1, "Level Not Set");
-		lua.Lua.assert(self.climate != -1, "Climate Not Set");
+		lua.Lua.assert(self.level != -1, "=====================Level Not Set====================");
+		lua.Lua.assert(self.climate != -1, "===================Climate Not Set==================");
 		Msg.post(".", GoMessages.acquire_input_focus);
 		self.run_pause_game = true;
 		var fps = 30;

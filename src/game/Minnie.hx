@@ -11,6 +11,14 @@ import defold.types.Url;
 import defold.types.Vector3;
 import hud.GuiSackMenu.GuiSackMenuMessage;
 
+@:build(defold.support.HashBuilder.build()) class MinnieHash {
+	// var /entity#blood_right_leg
+	var partical_blood_right_leg;
+	var partical_blood_left_leg;
+	var partical_blood_right_arm;
+	var partical_blood_left_arm;
+}
+
 private typedef MinnieData = {
 	@property var speed:Vector3;
 	var _active_button_a:Bool;
