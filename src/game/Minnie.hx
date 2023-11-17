@@ -96,7 +96,7 @@ class Minnie extends Script<MinnieData> {
 			case ControlMessage.button_b:
 				if (message.pressed && self._active_button_b) {
 					Defold.pprint('Minnie.hx Button B press $message');
-					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate);
+					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate); // TODO Stopped here
 					self._active_button_b = false;
 				}
 				if (message.released) {
