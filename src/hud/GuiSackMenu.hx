@@ -121,7 +121,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 					case 3:
 						self.hcurrent_wmd = Factory.create("/go#weapon_nuclear_raygun", self._mpos, self._mrot);
 					case 4:
-						self.hcurrent_wmd = Factory.create("/go#weapon_trained_cats", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_trained_cats_ferrets", self._mpos, self._mrot);
 					case 5:
 						self.hcurrent_wmd = Factory.create("/go#shield_straight", self._mpos, self._mrot);
 					case 6:
