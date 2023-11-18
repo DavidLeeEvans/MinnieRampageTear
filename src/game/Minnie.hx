@@ -22,6 +22,9 @@ import hud.GuiSackMenu.GuiSackMenuMessage;
 
 @:build(defold.support.HashBuilder.build()) class MinnieGroupHash {
 	var enemy;
+	var enemy_weapon;
+	var fixture; // TODO fixture collision
+	var portal; // TODO portal
 }
 
 private typedef MinnieData = {
@@ -150,10 +153,14 @@ class Minnie extends Script<MinnieData> {
 			case PhysicsMessages.collision_response:
 				switch (message.other_group) {
 					case MinnieGroupHash.enemy:
+					case MinnieGroupHash.enemy_weapon:
+					case MinnieGroupHash.fixture:
 				}
 			//
 			case PhysicsMessages.trigger_response:
-				//
+				switch (MinnieGroupHash.portal) {
+					case MinnieGroupHash.portal:
+				}
 		}
 	}
 
