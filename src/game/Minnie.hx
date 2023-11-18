@@ -2,6 +2,7 @@ package game;
 
 import defold.Go;
 import defold.Msg;
+import defold.Physics;
 import defold.Vmath;
 import defold.support.Script;
 import defold.types.Hash;
@@ -66,6 +67,20 @@ private typedef ButtonData = {
 	var analog_down:Bool;
 }
 
+enum abstract MinnieState(Int) {
+	var Attacking = 0;
+	var Walking;
+	var Running;
+	var Paused;
+	var Throwing;
+	var Grasp;
+	var Stunned;
+	var Teleporting;
+	var Hurt;
+	var Dying;
+	var Reunion;
+}
+
 class Minnie extends Script<MinnieData> {
 	override function init(self:MinnieData) {
 		self.speed = Vmath.vector3(0, 0, 0);
@@ -127,6 +142,11 @@ class Minnie extends Script<MinnieData> {
 				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_world_rotation()});
 			case MinnieMessage.set_wmd:
 				Go.set_parent(message.data, ".", true);
+			// --------------------  Physics Messages --------------------
+			case PhysicsMessages.collision_response:
+			//
+			case PhysicsMessages.trigger_response:
+				//
 		}
 	}
 
