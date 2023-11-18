@@ -7,6 +7,10 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
+  image: "/game/characters_props/Protagonist/red_square.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
   image: "/game/characters_props/Protagonist/black_left_arm.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }

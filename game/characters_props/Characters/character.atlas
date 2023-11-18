@@ -7,6 +7,10 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
+  image: "/game/characters_props/Characters/red_square.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
   image: "/game/characters_props/Characters/purple_character.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
