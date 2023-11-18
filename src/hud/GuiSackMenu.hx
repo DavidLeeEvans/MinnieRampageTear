@@ -113,7 +113,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 					Msg.post(self.hcurrent_wmd, WeaponsMessages.delete_weapon);
 				switch (self.wmdindex) {
 					case 0:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#shield_curved", self._mpos, self._mrot);
 					case 1:
 						self.hcurrent_wmd = Factory.create("/go#weapon_axe", self._mpos, self._mrot);
 					case 2:
@@ -123,46 +123,47 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 					case 4:
 						self.hcurrent_wmd = Factory.create("/go#weapon_trained_cats", self._mpos, self._mrot);
 					case 5:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot); // TODO stopped here
+						self.hcurrent_wmd = Factory.create("/go#shield_straight", self._mpos, self._mrot);
 					case 6:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_axe_large", self._mpos, self._mrot);
 					case 7:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_dagger", self._mpos, self._mrot);
 					case 8:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_pole", self._mpos, self._mrot);
 					case 9:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_trained_cats_ferret", self._mpos, self._mrot);
 					case 10:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_boomerang", self._mpos, self._mrot);
 					case 11:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_flamethrower", self._mpos, self._mrot);
 					case 12:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_spear", self._mpos, self._mrot);
 					case 13:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_arrow", self._mpos, self._mrot);
 					case 14:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_bow_arrow", self._mpos, self._mrot);
 					case 15:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_hammer", self._mpos, self._mrot);
 					case 16:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_staff", self._mpos, self._mrot);
 					case 17:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_axe_blades", self._mpos, self._mrot);
 					case 18:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_bow", self._mpos, self._mrot);
 					case 19:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_longsword", self._mpos, self._mrot);
 					case 20:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_sword", self._mpos, self._mrot);
 					case 21:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_axe_double", self._mpos, self._mrot);
 					case 22:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_canopener", self._mpos, self._mrot);
 					case 23:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_machine_gun", self._mpos, self._mrot);
 					case 24:
-						self.hcurrent_wmd = Factory.create("/go#shield_curve", self._mpos, self._mrot);
+						self.hcurrent_wmd = Factory.create("/go#weapon_throwing_stars", self._mpos, self._mrot);
 					case 25:
+						self.hcurrent_wmd = Factory.create("/go#weapon_fist", self._mpos, self._mrot);
 				}
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.set_wmd, {data: self.hcurrent_wmd});
 			case GuiSackMenuMessage.item_select:
