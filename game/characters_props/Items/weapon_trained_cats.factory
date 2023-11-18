@@ -1,1 +1,3 @@
-prototype: ""
+prototype: "/game/characters_props/Items/weapon_trained_cats.go"
+load_dynamically: false
+dynamic_prototype: false
