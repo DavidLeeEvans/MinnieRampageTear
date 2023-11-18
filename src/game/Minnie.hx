@@ -99,10 +99,8 @@ class Minnie extends Script<MinnieData> {
 					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate); // TODO Stopped here
 					self._active_button_b = false;
 				}
-				if (message.released) {
-					Defold.pprint("Released");
+				if (message.released)
 					self._active_button_b = true;
-				}
 
 			case ControlMessage.analog_released:
 				Defold.pprint('Minnie.hx analog_released $message');
