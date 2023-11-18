@@ -52,5 +52,5 @@ scale_mode = fit
 max_count = 256
 
 [factory]
-max_count = 256
+max_count = 512
 
