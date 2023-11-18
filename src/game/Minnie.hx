@@ -12,12 +12,16 @@ import defold.types.Url;
 import defold.types.Vector3;
 import hud.GuiSackMenu.GuiSackMenuMessage;
 
-@:build(defold.support.HashBuilder.build()) class MinnieHash {
+@:build(defold.support.HashBuilder.build()) class MinnieParticleHash {
 	// var /entity#blood_right_leg
 	var partical_blood_right_leg;
 	var partical_blood_left_leg;
 	var partical_blood_right_arm;
 	var partical_blood_left_arm;
+}
+
+@:build(defold.support.HashBuilder.build()) class MinnieGroupHash {
+	var enemy;
 }
 
 private typedef MinnieData = {
@@ -89,7 +93,7 @@ class Minnie extends Script<MinnieData> {
 	}
 
 	override function update(self:MinnieData, dt:Float):Void {
-		final _pos = Go.get_world_position();
+		// final _pos = Go.get_world_position();
 		// Defold.pprint("------------ y2k like testing -----------------------");
 		// Defold.pprint(_pos);
 		// Defold.pprint(self.speed);
@@ -144,6 +148,9 @@ class Minnie extends Script<MinnieData> {
 				Go.set_parent(message.data, ".", true);
 			// --------------------  Physics Messages --------------------
 			case PhysicsMessages.collision_response:
+				switch (message.other_group) {
+					case MinnieGroupHash.enemy:
+				}
 			//
 			case PhysicsMessages.trigger_response:
 				//

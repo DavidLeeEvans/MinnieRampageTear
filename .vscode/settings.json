@@ -124,5 +124,6 @@
         ".internal",
         ".defold_api"
     ],
+    "cmake.configureOnOpen": false,
     
 }
