@@ -41,6 +41,8 @@ private typedef GuiSackMenuData = {
 class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 	override function init(self:GuiSackMenuData) {
 		Msg.post("#", GuiSackMenuMessage.on_off_screen_instant, {data: false});
+		Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_pos);
+		Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_rot);
 		//
 		self.wmdindex = 0;
 		self.string_wmd = [
@@ -103,9 +105,6 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 			//
 			//
 			case GuiSackMenuMessage.item_select_rotate:
-				self.wmdindex++;
-				if (self.wmdindex > self.int_wmd.length)
-					self.wmdindex = 0;
 				Defold.pprint(self.string_wmd[self.wmdindex]);
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_pos);
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_rot);
@@ -164,6 +163,9 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 					case 25:
 						self.hcurrent_wmd = Factory.create("/go#weapon_fist", self._mpos, self._mrot);
 				}
+				self.wmdindex++;
+				if (self.wmdindex > self.int_wmd.length)
+					self.wmdindex = 0;
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.set_wmd, {data: self.hcurrent_wmd});
 			case GuiSackMenuMessage.item_select:
 			case GuiSackMenuMessage.toggle_on_off_screen:

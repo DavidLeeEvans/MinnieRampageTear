@@ -2,7 +2,6 @@ package game;
 
 import defold.Go;
 import defold.Msg;
-import defold.Physics;
 import defold.Vmath;
 import defold.support.Script;
 import defold.types.Hash;
@@ -12,19 +11,19 @@ import defold.types.Url;
 import defold.types.Vector3;
 import hud.GuiSackMenu.GuiSackMenuMessage;
 
+@:build(defold.support.HashBuilder.build()) class MinnieGroupHash {
+	var enemy;
+	var enemy_weapon;
+	var fixture; // TODO fixture collision
+	var portal; // TODO portal
+}
+
 @:build(defold.support.HashBuilder.build()) class MinnieParticleHash {
 	// var /entity#blood_right_leg
 	var partical_blood_right_leg;
 	var partical_blood_left_leg;
 	var partical_blood_right_arm;
 	var partical_blood_left_arm;
-}
-
-@:build(defold.support.HashBuilder.build()) class MinnieGroupHash {
-	var enemy;
-	var enemy_weapon;
-	var fixture; // TODO fixture collision
-	var portal; // TODO portal
 }
 
 private typedef MinnieData = {
@@ -74,11 +73,12 @@ private typedef ButtonData = {
 	var analog_down:Bool;
 }
 
+// TODO animation_hashes
 enum abstract MinnieState(Int) {
 	var Attacking = 0;
 	var Walking;
 	var Running;
-	var Paused;
+	var Resting;
 	var Throwing;
 	var Grasp;
 	var Stunned;
@@ -144,23 +144,11 @@ class Minnie extends Script<MinnieData> {
 					self.speed.y = 0;
 				}
 			case MinnieMessage.send_pos:
-				Msg.post(sender, MinnieMessage.receive_pos, {pos: Go.get_world_position()});
+				Msg.post(sender, MinnieMessage.receive_pos, {pos: Go.get_position()});
 			case MinnieMessage.send_rot:
-				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_world_rotation()});
+				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_rotation()});
 			case MinnieMessage.set_wmd:
 				Go.set_parent(message.data, ".", true);
-			// --------------------  Physics Messages --------------------
-			case PhysicsMessages.collision_response:
-				switch (message.other_group) {
-					case MinnieGroupHash.enemy:
-					case MinnieGroupHash.enemy_weapon:
-					case MinnieGroupHash.fixture:
-				}
-			//
-			case PhysicsMessages.trigger_response:
-				switch (MinnieGroupHash.portal) {
-					case MinnieGroupHash.portal:
-				}
 		}
 	}
 

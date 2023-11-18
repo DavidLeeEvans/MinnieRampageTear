@@ -1,6 +1,7 @@
 package game;
 
 import defold.Go;
+import defold.Physics.PhysicsMessages;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
@@ -9,6 +10,8 @@ import lua.Lua;
 
 @:build(defold.support.MessageBuilder.build()) class WeaponsMessages {
 	var fire:{?targer:Hash};
+	var drop;
+	var pickup;
 	var delete_weapon;
 }
 
@@ -40,6 +43,13 @@ import lua.Lua;
 	weapon_throwing_stars      = 24
 	weapon_fist                = 25
  */
+@:build(defold.support.HashBuilder.build()) class WeaponGroupHash {
+	var enemy;
+	var enemy_weapon;
+	var fixture; // TODO fixture collision
+	var portal; // TODO portal
+}
+
 private typedef WeaponsData = {
 	@property(-1) var type:Int;
 	@property(6.0) var delay:Float;
@@ -48,7 +58,7 @@ private typedef WeaponsData = {
 
 class Weapons extends Script<WeaponsData> {
 	override function init(self:WeaponsData) {
-		Lua.assert(self.type != -1, "!!!!!!! Cat type is not Set !!!!!!!!!!");
+		Lua.assert(self.type != -1, "!!!!!!! Weapon type is not Set !!!!!!!!!!");
 	}
 
 	override function update(self:WeaponsData, dt:Float):Void {}
@@ -58,6 +68,19 @@ class Weapons extends Script<WeaponsData> {
 			case WeaponsMessages.fire:
 			case WeaponsMessages.delete_weapon:
 				Go.delete();
+
+			// --------------------  Physics Messages --------------------
+			case PhysicsMessages.collision_response:
+				switch (message.other_group) {
+					case WeaponGroupHash.enemy:
+					case WeaponGroupHash.enemy_weapon:
+					case WeaponGroupHash.fixture:
+				}
+			//
+			case PhysicsMessages.trigger_response:
+				switch (WeaponGroupHash.portal) {
+					case WeaponGroupHash.portal:
+				}
 		}
 	}
 
