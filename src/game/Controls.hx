@@ -1,6 +1,5 @@
 package game;
 
-import defold.Go.GoMessages;
 import defold.Msg;
 import defold.Vmath;
 import defold.support.Script;
@@ -50,7 +49,6 @@ private typedef ButtonData = {
 
 class Controls extends Script<ControlData> {
 	override function init(self:ControlData) {
-		Msg.post(".", GoMessages.acquire_input_focus);
 		self.speed = Vmath.vector3(0, 0, 0);
 		self._active_button_a = true;
 		self._active_button_b = true;
@@ -79,7 +77,7 @@ class Controls extends Script<ControlData> {
 			case ControlMessage.button_b:
 				if (message.pressed && self._active_button_b) {
 					Defold.pprint('Control.hx Button B press $message');
-					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate); // TODO Stopped here
+					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate); // TODO Testing for rotation Stopped here
 					self._active_button_b = false;
 				}
 				if (message.released)
