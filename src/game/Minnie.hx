@@ -73,12 +73,29 @@ private typedef ButtonData = {
 	var analog_down:Bool;
 }
 
-// TODO animation_hashes
+@:build(defold.support.HashBuilder.build()) class MinnieAnimationHash {
+	var Attacking;
+	var Walking;
+	var Running;
+	var Resting;
+	var Jumping;
+	var Ducking;
+	var Throwing;
+	var Grasp;
+	var Stunned;
+	var Teleporting;
+	var Hurt;
+	var Dying;
+	var Reunion;
+}
+
 enum abstract MinnieState(Int) {
 	var Attacking = 0;
 	var Walking;
 	var Running;
 	var Resting;
+	var Jumping;
+	var Ducking;
 	var Throwing;
 	var Grasp;
 	var Stunned;
