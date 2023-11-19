@@ -1,4 +1,4 @@
-package game;
+package game.minnie;
 
 import defold.Go;
 import defold.Msg;
