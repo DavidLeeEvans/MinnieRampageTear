@@ -10,13 +10,13 @@ function init(self)
 	self.button_b = gui.get_node("button_b")
 
 	onscreen.register_analog(self.analog, { radius = 80 }, function(action, node, touch)
-		msg.post("/Minnie/entity#Minnie", "move", touch)
+		msg.post("/Minnie/entity#Controls", "move", touch)
 	end)
 	onscreen.register_button(self.button_a, nil, function(action, node, touch)
-		msg.post("/Minnie/entity#Minnie", "button_a", touch)
+		msg.post("/Minnie/entity#Controls", "button_a", touch)
 	end)
 	onscreen.register_button(self.button_b, nil, function(action, node, released)
-		msg.post("/Minnie/entity#Minnie", "button_b", released)
+		msg.post("/Minnie/entity#Controls", "button_b", released)
 	end)
 end
 

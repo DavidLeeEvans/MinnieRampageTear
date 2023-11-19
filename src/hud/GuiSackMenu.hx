@@ -43,6 +43,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 		Msg.post("#", GuiSackMenuMessage.on_off_screen_instant, {data: false});
 		Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_pos);
 		Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_rot);
+
 		//
 		self.wmdindex = 0;
 		self.string_wmd = [
@@ -106,8 +107,8 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 			//
 			case GuiSackMenuMessage.item_select_rotate:
 				Defold.pprint(self.string_wmd[self.wmdindex]);
-				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_pos);
-				Msg.post("/Minnie/entity#Minnie", MinnieMessage.send_rot);
+				Msg.post("/Minnie/entity#Controls", MinnieMessage.send_pos);
+				Msg.post("/Minnie/entity#Controls", MinnieMessage.send_rot);
 				if (self.hcurrent_wmd != null)
 					Msg.post(self.hcurrent_wmd, WeaponsMessages.delete_weapon);
 				switch (self.wmdindex) {
