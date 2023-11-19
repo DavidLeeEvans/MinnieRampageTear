@@ -1,4 +1,4 @@
-name: "level00"
+name: "level01"
 instances {
   id: "camera"
   prototype: "/orthographic/camera.go"
