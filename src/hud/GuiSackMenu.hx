@@ -106,7 +106,7 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 			//
 			//
 			case GuiSackMenuMessage.item_select_rotate:
-				Defold.pprint(self.string_wmd[self.wmdindex]);
+				Defold.pprint(self.string_wmd[self.wmdindex]); // TODO create proper tables for offset firing rate, damage, collision detection, etc.
 				Msg.post("/Minnie/entity#Controls", MinnieMessage.send_pos);
 				Msg.post("/Minnie/entity#Controls", MinnieMessage.send_rot);
 				if (self.hcurrent_wmd != null)

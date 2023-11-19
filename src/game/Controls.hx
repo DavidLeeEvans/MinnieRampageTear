@@ -69,6 +69,7 @@ class Controls extends Script<ControlData> {
 				if (message.pressed && self._active_button_a) {
 					Defold.pprint('Control.hx Button A  released $message');
 					Msg.post("/go#sack_menu", GuiSackMenuMessage.on_off_screen, {data: true});
+					// TODO Testing WMD launching Button A
 					self._active_button_a = false;
 				}
 				if (message.released)
