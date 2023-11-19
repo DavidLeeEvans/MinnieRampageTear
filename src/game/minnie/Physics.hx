@@ -11,7 +11,7 @@ import defold.types.Url;
 private typedef PhysicsData = {}
 
 class Physics extends Script<PhysicsData> {
-}
+
 
 	override function update(self:PhysicsData, dt:Float):Void {}
 
