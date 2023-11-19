@@ -14,7 +14,7 @@ import defold.types.Message;
 import defold.types.Quaternion;
 import defold.types.Url;
 import defold.types.Vector3;
-import game.Minnie.MinnieMessage;
+import game.minnie.Minnie.MinnieMessage;
 import game.Weapons.WeaponsMessages;
 
 private typedef GuiSackMenuData = {
