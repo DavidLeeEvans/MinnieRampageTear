@@ -7,22 +7,6 @@ import defold.types.Url;
 
 private typedef AnimationsData = {}
 
-@:build(defold.support.HashBuilder.build()) class AnimationsHash {
-	var Attacking;
-	var Walking;
-	var Running;
-	var Resting;
-	var Jumping;
-	var Ducking;
-	var Throwing;
-	var Grasp;
-	var Stunned;
-	var Teleporting;
-	var Hurt;
-	var Dying;
-	var Reunion;
-}
-
 class Animations extends Script<AnimationsData> {
 	override function init(self:AnimationsData) {}
 

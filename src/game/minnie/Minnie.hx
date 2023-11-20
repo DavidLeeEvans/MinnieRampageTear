@@ -1,5 +1,6 @@
 package game.minnie;
 
+import defold.Sprite;
 import defold.Go;
 import defold.Msg;
 import defold.Vmath;
@@ -84,9 +85,13 @@ class Minnie extends Script<MinnieData> {
 				self.state = message.state;
 				switch (message.state) {
 					case 0:
-					case 1:
+						// TODO Attack
+						case 1:
+						// TODO Walking
 					case 2:
+						// Running
 					case 3:
+						//
 					case 4:
 					case 5:
 					case 6:
