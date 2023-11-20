@@ -1,6 +1,8 @@
 package game.minnie;
 
 import Defold.hash;
+import defold.Factory;
+import defold.Go;
 import defold.Sprite.SpriteMessages;
 import defold.extensions.spine.Spine;
 import defold.support.Script;
@@ -12,7 +14,20 @@ private typedef AnimationsSpineData = {}
 class AnimationsSpine extends Script<AnimationsSpineData> {
 	override function init(self:AnimationsSpineData) {
 		// Spine.get_go("foo#myspinecomponent", "boneid")
-		final _body = Spine.get_go("/go#MinnieSpine", hash("black_left_arm"));
+
+		final _left_id = Spine.get_go("/MinnieSpine/go#MinnieSpine", hash("black_left_arm"));
+		final _right_id = Spine.get_go("/MinnieSpine/go#MinnieSpine", hash("black_right_arm"));
+		final _body_id = Spine.get_go("/MinnieSpine/go#MinnieSpine", hash("black_character"));
+		final _left_obj = Factory.create("fac_black_left_arm");
+		final _right_obj = Factory.create("fac_black_right_arm");
+		final _body_obj = Factory.create("fac_black_character");
+		Go.set_parent(_left_obj, _left_id);
+		Go.set_parent(_right_obj, _right_id);
+		Go.set_parent(_body_obj, _body_id);
+		//
+		Go.set_parent(_left_id, ".");
+		Go.set_parent(_right_id, ".");
+		Go.set_parent(_body_id, ".");
 	}
 
 	override function update(self:AnimationsSpineData, dt:Float):Void {}
