@@ -46,6 +46,7 @@ enum abstract MinnieState(Int) {
 	var Running;
 	var Resting;
 	var Jumping;
+	var JumpLanding;
 	var Ducking;
 	var Throwing;
 	var Grasp;
@@ -81,6 +82,24 @@ class Minnie extends Script<MinnieData> {
 				Go.set_parent(message.data, ".", true);
 			case MinnieMessage.set_state:
 				self.state = message.state;
+				switch (message.state) {
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+					case 6:
+					case 7:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+				}
 		}
 	}
 

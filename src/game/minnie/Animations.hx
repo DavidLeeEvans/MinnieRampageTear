@@ -36,27 +36,27 @@ class Animations extends Script<AnimationsData> {
 				} else if (message.id == AnimationsHash.Walking) {
 					// TODO Walking
 				} else if (message.id == AnimationsHash.Running) {
-					// TODO Walking
+					// TODO Running
 				} else if (message.id == AnimationsHash.Resting) {
-					// TODO Walking
+					// TODO Resting
 				} else if (message.id == AnimationsHash.Jumping) {
-					// TODO Walking
+					// TODO Jumping
 				} else if (message.id == AnimationsHash.Ducking) {
-					// TODO Walking
+					// TODO Ducking
 				} else if (message.id == AnimationsHash.Throwing) {
-					// TODO Walking
+					// TODO Throwing
 				} else if (message.id == AnimationsHash.Grasp) {
-					// TODO Walking
+					// TODO Grasp
 				} else if (message.id == AnimationsHash.Stunned) {
-					// TODO Walking
+					// TODO Stunned
 				} else if (message.id == AnimationsHash.Teleporting) {
-					// TODO Walking
+					// TODO Teleporting
 				} else if (message.id == AnimationsHash.Hurt) {
-					// TODO Walking
+					// TODO Hurt
 				} else if (message.id == AnimationsHash.Dying) {
-					// TODO Walking
+					// TODO Dying
 				} else if (message.id == AnimationsHash.Reunion) {
-					// TODO Walking
+					// TODO Reunion
 				}
 		}
 	}
