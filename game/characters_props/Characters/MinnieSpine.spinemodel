@@ -1,6 +1,0 @@
-spine_scene: "/game/characters_props/Characters/Minnie.spinescene"
-default_animation: "Walking"
-skin: ""
-blend_mode: BLEND_MODE_ALPHA
-material: "/defold-spine/assets/spine.material"
-create_go_bones: false

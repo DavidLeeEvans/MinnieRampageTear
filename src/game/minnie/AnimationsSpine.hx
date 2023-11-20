@@ -1,15 +1,19 @@
 package game.minnie;
 
+import Defold.hash;
 import defold.Sprite.SpriteMessages;
+import defold.extensions.spine.Spine;
 import defold.support.Script;
 import defold.types.Message;
 import defold.types.Url;
 
 private typedef AnimationsSpineData = {}
 
-
 class AnimationsSpine extends Script<AnimationsSpineData> {
-	override function init(self:AnimationsSpineData) {}
+	override function init(self:AnimationsSpineData) {
+		// Spine.get_go("foo#myspinecomponent", "boneid")
+		final _body = Spine.get_go("/go#MinnieSpine", hash("black_left_arm"));
+	}
 
 	override function update(self:AnimationsSpineData, dt:Float):Void {}
 
