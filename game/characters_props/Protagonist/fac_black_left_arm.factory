@@ -1,0 +1,3 @@
+prototype: "/game/characters_props/Protagonist/black_left_arm.go"
+load_dynamically: false
+dynamic_prototype: false
