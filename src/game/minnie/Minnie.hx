@@ -27,8 +27,6 @@ import defold.types.Vector3;
 
 private typedef MinnieData = {
 	@property var speed:Vector3;
-	// var _active_button_a:Bool;
-	// 	var _active_button_b:Bool;
 }
 
 @:build(defold.support.MessageBuilder.build()) class MinnieMessage {

@@ -1,18 +1,13 @@
 package game.minnie;
-import defold.Go.GoMessages;
-import defold.Msg;
-import Defold.hash;
+
 import defold.support.Script;
-import defold.support.ScriptOnInputAction;
-import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 
 private typedef AnimationsData = {}
 
 class Animations extends Script<AnimationsData> {
-	override function init(self:AnimationsData) {
-}
+	override function init(self:AnimationsData) {}
 
 	override function update(self:AnimationsData, dt:Float):Void {}
 
