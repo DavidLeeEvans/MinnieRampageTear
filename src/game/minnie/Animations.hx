@@ -1,10 +1,27 @@
 package game.minnie;
 
+import defold.Sprite.SpriteMessages;
 import defold.support.Script;
 import defold.types.Message;
 import defold.types.Url;
 
 private typedef AnimationsData = {}
+
+@:build(defold.support.HashBuilder.build()) class AnimationsHash {
+	var Attacking;
+	var Walking;
+	var Running;
+	var Resting;
+	var Jumping;
+	var Ducking;
+	var Throwing;
+	var Grasp;
+	var Stunned;
+	var Teleporting;
+	var Hurt;
+	var Dying;
+	var Reunion;
+}
 
 class Animations extends Script<AnimationsData> {
 	override function init(self:AnimationsData) {}
@@ -12,7 +29,36 @@ class Animations extends Script<AnimationsData> {
 	override function update(self:AnimationsData, dt:Float):Void {}
 
 	override function on_message<T>(self:AnimationsData, message_id:Message<T>, message:T, sender:Url):Void {
-		switch (message_id) {}
+		switch (message_id) {
+			case SpriteMessages.animation_done:
+				if (message.id == AnimationsHash.Attacking) {
+					// Attacking
+				} else if (message.id == AnimationsHash.Walking) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Running) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Resting) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Jumping) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Ducking) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Throwing) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Grasp) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Stunned) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Teleporting) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Hurt) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Dying) {
+					// TODO Walking
+				} else if (message.id == AnimationsHash.Reunion) {
+					// TODO Walking
+				}
+		}
 	}
 
 	override function final_(self:AnimationsData):Void {}

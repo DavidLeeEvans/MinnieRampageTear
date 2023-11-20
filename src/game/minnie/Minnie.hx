@@ -27,6 +27,7 @@ import defold.types.Vector3;
 
 private typedef MinnieData = {
 	@property var speed:Vector3;
+	@property var state:Int;
 }
 
 @:build(defold.support.MessageBuilder.build()) class MinnieMessage {
@@ -35,22 +36,8 @@ private typedef MinnieData = {
 	var receive_pos:{pos:Vector3};
 	var receive_rot:{rot:Quaternion};
 	var set_wmd:{data:Hash}; // TODO research this dle
-}
-
-@:build(defold.support.HashBuilder.build()) class MinnieAnimationHash {
-	var Attacking;
-	var Walking;
-	var Running;
-	var Resting;
-	var Jumping;
-	var Ducking;
-	var Throwing;
-	var Grasp;
-	var Stunned;
-	var Teleporting;
-	var Hurt;
-	var Dying;
-	var Reunion;
+	//
+	var set_state:{state:Int};
 }
 
 enum abstract MinnieState(Int) {
@@ -67,6 +54,7 @@ enum abstract MinnieState(Int) {
 	var Hurt;
 	var Dying;
 	var Reunion;
+	var Spawning;
 }
 
 class Minnie extends Script<MinnieData> {
@@ -91,6 +79,8 @@ class Minnie extends Script<MinnieData> {
 				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_rotation()});
 			case MinnieMessage.set_wmd:
 				Go.set_parent(message.data, ".", true);
+			case MinnieMessage.set_state:
+				self.state = message.state;
 		}
 	}
 
