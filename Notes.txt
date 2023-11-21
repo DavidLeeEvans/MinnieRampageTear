@@ -1,2 +1,6 @@
 Later: For more advance rendering, look at dex Haxe Render  = Next game.
-[ ] Orthocamera screen position to World position.
+[x] Orthocamera screen position to World position.
+[ ] Start Creating all Spine Animations and Assets.
+[ ] Redo the WMD menu.
+[ ] Test Kinematic or Triggers.
+[ ] 
