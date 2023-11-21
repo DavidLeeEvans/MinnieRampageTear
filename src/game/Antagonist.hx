@@ -1,15 +1,26 @@
 package game;
 
-import Defold.hash;
-import defold.Go.GoMessages;
-import defold.Msg;
 import defold.support.Script;
-import defold.support.ScriptOnInputAction;
-import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 
-private typedef AntagonistData = {}
+enum abstract AntagonistEnumState(Int) {
+	var Pleading = 0;
+	var Attacking;
+	var Running;
+	var Hiding;
+	var Assembling;
+	var Dying;
+	var Spawning;
+	var Stunned;
+	var Lost;
+	var WMDLocate;
+	var Flanking;
+}
+
+private typedef AntagonistData = {
+	var _state:Int;
+}
 
 class Antagonist extends Script<AntagonistData> {
 	override function init(self:AntagonistData) {}
