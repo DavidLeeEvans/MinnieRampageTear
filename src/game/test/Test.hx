@@ -8,7 +8,7 @@ import defold.types.Url;
 private typedef TestData = {}
 
 class Test extends Script<TestData> {
-	override function init(self:AnimationsData) {}
+	override function init(self:TestData) {}
 
 	override function update(self:TestData, dt:Float):Void {}
 
