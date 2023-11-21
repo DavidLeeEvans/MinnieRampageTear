@@ -96,7 +96,7 @@ collection_instances {
   id: "Test"
   collection: "/game/characters_props/Test/Test.collection"
   position {
-    x: 1164.0
+    x: 1085.0
     y: 685.0
     z: 0.0
   }

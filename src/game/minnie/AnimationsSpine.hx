@@ -18,6 +18,7 @@ class AnimationsSpine extends Script<AnimationsSpineData> {
 		final _left_id = Spine.get_go("#MinnieSpine", hash("black_left_arm"));
 		final _right_id = Spine.get_go("#MinnieSpine", hash("black_right_arm"));
 		final _body_id = Spine.get_go("#MinnieSpine", hash("black_character"));
+		//
 		final _left_obj = Factory.create("#fac_black_left_arm");
 		final _right_obj = Factory.create("#fac_black_right_arm");
 		final _body_obj = Factory.create("#fac_black_character");
