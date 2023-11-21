@@ -11,7 +11,6 @@ private typedef TestData = {}
 class Test extends Script<TestData> {
 	override function init(self:TestData) {
 		final _left_wing_id = Spine.get_go("#spinemodel", hash("left-wing"));
-
 		final _right_wing_id = Spine.get_go("#spinemodel", hash("right-wing"));
 		final _token_id = Spine.get_go("#spinemodel", hash("token"));
 		//
@@ -19,15 +18,10 @@ class Test extends Script<TestData> {
 		final _right_wing = Factory.create("#fac_black_right_arm");
 		final _token = Factory.create("#fac_black_character");
 		//
-		// Go.set_parent(_left_wing, _left_wing_id);
-		Go.set_parent(_left_wing_id, _left_wing);
-		Go.set_parent(_right_wing, _right_wing_id);
-		Go.set_parent(_token, _token_id);
+		Go.set_parent(_left_wing, _left_wing_id, true);
+		Go.set_parent(_right_wing, _right_wing_id, true);
+		Go.set_parent(_token, _token_id, true);
 		//
-		// Go.set_parent(_left_wing_id, ".");
-		Go.set_parent(_left_wing, ".");
-		Go.set_parent(_right_wing_id, ".");
-		Go.set_parent(_token_id, ".");
 	}
 
 	override function update(self:TestData, dt:Float):Void {}
