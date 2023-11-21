@@ -22,13 +22,11 @@ class AnimationsSpine extends Script<AnimationsSpineData> {
 		final _left_obj = Factory.create("#fac_black_left_arm");
 		final _right_obj = Factory.create("#fac_black_right_arm");
 		final _body_obj = Factory.create("#fac_black_character");
+		//
 		Go.set_parent(_left_obj, _left_id);
 		Go.set_parent(_right_obj, _right_id);
 		Go.set_parent(_body_obj, _body_id);
 		//
-		Go.set_parent(_left_id, ".");
-		Go.set_parent(_right_id, ".");
-		Go.set_parent(_body_id, ".");
 	}
 
 	override function update(self:AnimationsSpineData, dt:Float):Void {}
