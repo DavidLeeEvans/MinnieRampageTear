@@ -1,4 +1,4 @@
-package game;
+package game.antagonist;
 
 import defold.support.Script;
 import defold.types.Message;
