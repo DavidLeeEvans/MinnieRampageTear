@@ -10,7 +10,6 @@ private typedef SigmaData = {}
 
 class Sigma extends Script<SigmaData> {
 	override function init(self:SigmaData) {
-		Msg.post(".", GoMessages.acquire_input_focus);
 	}
 
 	override function update(self:SigmaData, dt:Float):Void {}
