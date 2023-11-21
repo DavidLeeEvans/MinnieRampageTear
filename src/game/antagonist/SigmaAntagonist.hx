@@ -8,9 +8,8 @@ import defold.types.Url;
 
 private typedef SigmaAntagonistData = {}
 
-class Sigma extends Script<SigmaAntagonistData> {
-	override function init(self:SigmaAntagonistData) {
-	}
+class SigmaAntagonist extends Script<SigmaAntagonistData> {
+	override function init(self:SigmaAntagonistData) {}
 
 	override function update(self:SigmaAntagonistData, dt:Float):Void {}
 
