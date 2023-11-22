@@ -93,11 +93,11 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "Test"
-  collection: "/game/characters_props/Test/Test.collection"
+  id: "evelynn"
+  collection: "/game/characters_props/Characters/Evelynn/evelynn.collection"
   position {
-    x: 998.0
-    y: 817.0
+    x: 993.0
+    y: 772.0
     z: 0.0
   }
   rotation {
