@@ -1,4 +1,4 @@
-package game.antagonis;
+package game.antagonist;
 
 import Defold.hash;
 import defold.Factory;
@@ -11,7 +11,7 @@ import defold.types.Url;
 
 private typedef AntagonistAnimationsSpineData = {}
 
-class AntagonistAnimationsSpine extends Script<AnimationsSpineData> {
+class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
 	override function init(self:AntagonistAnimationsSpineData) {
 		// Spine.get_go("foo#myspinecomponent", "boneid")
 
@@ -23,8 +23,8 @@ class AntagonistAnimationsSpine extends Script<AnimationsSpineData> {
 		final _right_wmd_obj = Factory.create("#fac_black_right_arm");
 		final _body_obj = Factory.create("#fac_black_character");
 		//
-		Go.set_parent(_left_obj, _left_wmd+id);
-		Go.set_parent(_right_obj, _right_wmd_id);
+		Go.set_parent(_left_wmd_obj, _left_wmd_id);
+		Go.set_parent(_right_wmd_obj, _right_wmd_id);
 		Go.set_parent(_body_obj, _body_id);
 		//
 	}
