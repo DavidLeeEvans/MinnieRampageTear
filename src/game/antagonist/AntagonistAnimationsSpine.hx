@@ -12,19 +12,25 @@ private typedef AntagonistAnimationsSpineData = {}
 
 class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
 	override function init(self:AntagonistAnimationsSpineData) {
-		// Spine.get_go("foo#myspinecomponent", "boneid")
-
 		final _left_wmd_id = Spine.get_go("#spine", hash("left-wmd"));
+		Defold.pprint(' Party left ');
+		Defold.pprint(Go.get_world_position(_left_wmd_id));
 		final _right_wmd_id = Spine.get_go("#spine", hash("right-wmd"));
-		final _body_id = Spine.get_go("#spine", hash("body"));
+		Defold.pprint(' Party right ');
+		Defold.pprint(Go.get_world_position(_right_wmd_id));
 		//
-		final _left_wmd_obj = Factory.create("#fac_wmd");
-		final _right_wmd_obj = Factory.create("#fac_wmd");
+		final _body_id = Spine.get_go("#spine", hash("body"));
+		Defold.pprint(' Party Body ');
+		Defold.pprint(Go.get_world_position(_body_id));
+
+		//
+		final _left_wmd_obj = Factory.create("#fac_wmd", Go.get_world_position(_left_wmd_id));
+		final _right_wmd_obj = Factory.create("#fac_wmd", Go.get_world_position(_right_wmd_id));
 		final _body_obj = Factory.create("#fac_body");
 		//
-		Go.set_parent(_left_wmd_obj, _left_wmd_id);
-		Go.set_parent(_right_wmd_obj, _right_wmd_id);
-		Go.set_parent(_body_obj, _body_id);
+		Go.set_parent(_left_wmd_obj, _left_wmd_id, true);
+		Go.set_parent(_right_wmd_obj, _right_wmd_id, true);
+		Go.set_parent(_body_obj, _body_id, true);
 		//
 	}
 
