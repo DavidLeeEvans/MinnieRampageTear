@@ -1,19 +1,19 @@
 package game.antagonist;
 
 import Defold.hash;
-import defold.Factory;
 import defold.Go;
 import defold.extensions.spine.Spine;
 import defold.support.Script;
 import defold.types.Message;
 import defold.types.Url;
+import lua.Table;
 
 private typedef AntagonistAnimationsSpineData = {}
 
 class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
 	override function init(self:AntagonistAnimationsSpineData) {
-		final _left_wmd_id = Spine.get_go("#spine", hash("left-wmd"));
-		Defold.pprint(' Party left ');
+		final _table = Table.create("");
+
 		Defold.pprint(Go.get_world_position(_left_wmd_id));
 		final _right_wmd_id = Spine.get_go("#spine", hash("right-wmd"));
 		Defold.pprint(' Party right ');
