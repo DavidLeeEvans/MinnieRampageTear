@@ -21,5 +21,5 @@ class BloodSplatterPersistent extends Script<BloodSplatterPersistentData> {
 
 	override function final_(self:BloodSplatterPersistentData):Void {}
 
-	override function on_reload(self:TBloodSplatterPersistentData):Void {}
+	override function on_reload(self:BloodSplatterPersistentData):Void {}
 }
