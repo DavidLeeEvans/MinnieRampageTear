@@ -8,18 +8,18 @@ import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 
-private typedef TData = {}
+private typedef BloodSplatterData = {}
 
-class Entity extends Script<TData> {
-	override function init(self:TData) {
+class BloodSplatter extends Script<BloodSplatterData> {
+	override function init(self:BloodSplatterData) {
 }
 
-	override function update(self:TData, dt:Float):Void {}
-	override function on_message<T>(self:TData, message_id:Message<T>, message:T, sender:Url):Void {
+	override function update(self:BloodSplatterData, dt:Float):Void {}
+	override function on_message<T>(self:BloodSplatterData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {}
 	}
 
-	override function final_(self:TData):Void {}
+	override function final_(self:BloodSplatterData):Void {}
 
-	override function on_reload(self:TData):Void {}
+	override function on_reload(self:TBloodSplatterData):Void {}
 }

@@ -8,18 +8,18 @@ import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 
-private typedef TData = {}
+private typedef FootPrintData = {}
 
-class Entity extends Script<TData> {
-	override function init(self:TData) {
+class FootPrint extends Script<FootPrintData> {
+	override function init(self:FootPrintData) {
 }
 
-	override function update(self:TData, dt:Float):Void {}
-	override function on_message<T>(self:TData, message_id:Message<T>, message:T, sender:Url):Void {
+	override function update(self:FootPrintData, dt:Float):Void {}
+	override function on_message<T>(self:FootPrintData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {}
 	}
 
-	override function final_(self:TData):Void {}
+	override function final_(self:FootPrintData):Void {}
 
-	override function on_reload(self:TData):Void {}
+	override function on_reload(self:FootPrintData):Void {}
 }
