@@ -1,21 +1,22 @@
 local shape1 = vmath.vector3(660,576,0)  --  < 1 >
 local shape2 = vmath.vector3(150,500,0)
 local shape3 = vmath.vector3(350,250,0)
-
+-- Look at the training course
+-- Get some Edge Detection Program
 local function getshape(self)  --  < 2 >
 	local node = gui.get_node("slice_box")
 	local function animate_size(node, shape)  --  < 3 >
-		gui.animate(node, "size", shape, gui.EASING_INOUTCUBIC, 1.75, 2.5, getshape, gui.PLAYBACK_ONCE_FORWARD)
+		gui.animate(node, "size", shape, gui.EASING_INOUTCUBIC, 0.75, 0.5, getshape, gui.PLAYBACK_ONCE_FORWARD)
 	end
 	if self.shape_number == 1 then
 		animate_size(node, shape1)
-		self.shape_number = 2
+	--	self.shape_number = 2
 	elseif self.shape_number == 2 then
 		animate_size(node, shape2)
-		self.shape_number = 3
-	else
-		animate_size(node, shape3)
-		self.shape_number = 1
+	--	self.shape_number = 3
+--	else
+--		animate_size(node, shape3)
+--		self.shape_number = 1
 	end
 end
 
@@ -35,4 +36,4 @@ function on_message(self, message_id, message, sender)
 		self.shape_number = 3
 		getshape(self)
 	end
-	
+end
