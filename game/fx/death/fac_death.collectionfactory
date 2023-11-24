@@ -1,0 +1,3 @@
+prototype: "/game/fx/death/death.collection"
+load_dynamically: false
+dynamic_prototype: false
