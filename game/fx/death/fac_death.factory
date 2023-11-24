@@ -1,0 +1,3 @@
+prototype: "/game/fx/death/guts_organ_blood.go"
+load_dynamically: false
+dynamic_prototype: false
