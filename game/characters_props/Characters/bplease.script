@@ -1,0 +1,3 @@
+function init(self)
+	-- self.timer = 0
+end
