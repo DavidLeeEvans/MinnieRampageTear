@@ -57,15 +57,6 @@ class Death extends Script<DeathData> {
 				(_, _, _) -> Defold.pprint("Y Finished"));
 			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, .2, 2);
 		}
-		//
-
-		// TODO Go.animate('/death/bskull', "rotation.z", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 40, GoEasing.EASING_LINEAR, 20, 0,
-		// 	(_, _, _) -> Defold.pprint("Z Rotation Finished"));
-		// Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO should blink
-		// Timer.delay(self.remove, false, (_, _, _) -> {
-		// 	Go.animate('/death/bskull', "position.z", GoPlayback.PLAYBACK_ONCE_FORWARD, -1, GoEasing.EASING_LINEAR, 10, 0,
-		// 		(_, _, _) -> Defold.pprint("Alpha Finished"));
-		// }); // TODO should blink
 
 		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO delete th object flicker
 	}
