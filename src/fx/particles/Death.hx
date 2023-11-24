@@ -21,13 +21,6 @@ import lua.lib.luasocket.Socket;
 	//
 }
 
-@:build(defold.support.HashBuilder.build()) class AnimationDeath {
-	var blong_bone;
-	var brib_cage;
-	var bskull;
-	var bsmall_bone;
-}
-
 private typedef DeathData = {
 	@property(4.0) var remove:Float;
 }
@@ -55,7 +48,11 @@ class Death extends Script<DeathData> {
 				(_, _, _) -> Defold.pprint("X Finished"));
 			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
 				(_, _, _) -> Defold.pprint("Y Finished"));
-			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, .2, 2);
+			var _wp = Go.get('/death/' + _o, "euler.z");
+
+			// final _p = _wp *
+			Go.animate('/death/' + _o, "euler.z", GoPlayback.PLAYBACK_ONCE_FORWARD, _wp * Math.deg(Math.random(0, 359)), GoEasing.EASING_OUTINELASTIC, .2, 0);
+			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, .2, 2); // TODO random flicker
 		}
 
 		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO delete th object flicker
