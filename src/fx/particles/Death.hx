@@ -10,7 +10,9 @@ import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 
-private typedef DeathData = {}
+private typedef DeathData = {
+@property(2.0) var remove:Float;
+}
 
 class Death extends Script<DeathData> {
 	override function init(self:DeathData) {

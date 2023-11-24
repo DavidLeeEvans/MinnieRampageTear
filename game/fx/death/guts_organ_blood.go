@@ -13,6 +13,21 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "Death"
+  component: "/scripts/fx/particles/Death.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "sprite0"
   type: "sprite"
