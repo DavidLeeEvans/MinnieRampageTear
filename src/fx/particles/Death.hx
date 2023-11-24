@@ -43,10 +43,11 @@ class Death extends Script<DeathData> {
 		// Particlefx.stop("#blood_spurt", _pso);
 
 		for (_o in blood_object_array) {
-			// lua.Math.randomseed(1000000 * (Socket.gettime() % 1));
-			Go.animate('/death/' + _o, "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0, // random x position
+			Go.animate('/death/' + _o, "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random(-100, 100), GoEasing.EASING_LINEAR, .3,
+				0, // random x position
 				(_, _, _) -> Defold.pprint("X Finished"));
-			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0, // random y position
+			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random(-100, 100), GoEasing.EASING_LINEAR, .3,
+				0, // random y position
 				(_, _, _) -> Defold.pprint("Y Finished"));
 			Go.animate('/death/' + _o, "euler.z", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random(0, 359), GoEasing.EASING_OUTINELASTIC, .2,
 				0); // random rotation
