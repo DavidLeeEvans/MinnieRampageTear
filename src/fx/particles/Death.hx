@@ -44,15 +44,14 @@ class Death extends Script<DeathData> {
 
 		for (_o in blood_object_array) {
 			// lua.Math.randomseed(1000000 * (Socket.gettime() % 1));
-			Go.animate('/death/' + _o, "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
+			Go.animate('/death/' + _o, "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0, // random x position
 				(_, _, _) -> Defold.pprint("X Finished"));
-			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
+			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0, // random y position
 				(_, _, _) -> Defold.pprint("Y Finished"));
-			var _wp = Go.get('/death/' + _o, "euler.z");
-
-			// final _p = _wp *
-			Go.animate('/death/' + _o, "euler.z", GoPlayback.PLAYBACK_ONCE_FORWARD, _wp * Math.deg(Math.random(0, 359)), GoEasing.EASING_OUTINELASTIC, .2, 0);
-			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, .2, 2); // TODO random flicker
+			Go.animate('/death/' + _o, "euler.z", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random(0, 359), GoEasing.EASING_OUTINELASTIC, .2,
+				0); // random rotation
+			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, Math.random() * .4,
+				2); // TODO random flicker
 		}
 
 		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO delete th object flicker
