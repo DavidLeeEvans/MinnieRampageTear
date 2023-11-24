@@ -55,6 +55,7 @@ class Death extends Script<DeathData> {
 				(_, _, _) -> Defold.pprint("X Finished"));
 			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
 				(_, _, _) -> Defold.pprint("Y Finished"));
+			Go.animate('/death/' + _o + '#sprite', "tint.w", GoPlayback.PLAYBACK_LOOP_PINGPONG, 0, GoEasing.EASING_INOUTSINE, .2, 2);
 		}
 		//
 
