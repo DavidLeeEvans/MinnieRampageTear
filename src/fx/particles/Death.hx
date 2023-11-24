@@ -13,14 +13,14 @@ import lua.Math;
 import lua.lib.luasocket.Socket;
 
 @:build(defold.support.HashBuilder.build()) class DeathHash {
-	var sprite0;
-	var sprite1;
-	var sprite2;
-	var sprite3;
-	var sprite4;
-	var sprite5;
-	var sprite6;
-	var sprite7;
+	// var sprite0;
+	// var sprite1;
+	// var sprite2;
+	// var sprite3;
+	// var sprite4;
+	// var sprite5;
+	// var sprite6;
+	// var sprite7;
 	//
 }
 
@@ -41,41 +41,42 @@ class Death extends Script<DeathData> {
 		Particlefx.play("#blood_spurt");
 		final _pso:ParticleFxStopOptions = {clear: true};
 		Particlefx.stop("#blood_spurt", _pso);
-		Sprite.play_flipbook("sprite0", AnimationDeath.bskull);
-		Sprite.play_flipbook(DeathHash.sprite1, AnimationDeath.brib_cage);
+		Sprite.play_flipbook('#sprite0', AnimationDeath.bskull);
+		Sprite.play_flipbook('#sprite1', AnimationDeath.brib_cage);
 		var _r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite2, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite2', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite2, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite2', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite3, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite3', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite3, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite3', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite4, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite4', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite4, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite4', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite5, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite5', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite5, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite5', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite6, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite6', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite6, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite6', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		if (_r > .5)
-			Sprite.play_flipbook(DeathHash.sprite7, AnimationDeath.blong_bone);
+			Sprite.play_flipbook('#sprite7', AnimationDeath.blong_bone);
 		else
-			Sprite.play_flipbook(DeathHash.sprite7, AnimationDeath.bsmall_bone);
+			Sprite.play_flipbook('#sprite7', AnimationDeath.bsmall_bone);
 		_r = Math.random();
 		//
-		Go.animate(DeathHash.sprite0, "property.xyz", GoPlayback.PLAYBACK_ONCE_FORWARD, Vmath.vector3(10, 10, .1), GoEasing.EASING_LINEAR, 2);
+
+		Go.animate('#sprite0', "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Vmath.vector3(10, 10, .1), GoEasing.EASING_LINEAR, 20);
 		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO should blink
 	}
 
