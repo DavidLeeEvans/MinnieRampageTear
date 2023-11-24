@@ -1,11 +1,8 @@
 package fx.particles;
 
 import defold.Go;
-import defold.Image;
 import defold.Particlefx;
-import defold.Sprite;
 import defold.Timer;
-import defold.Vmath;
 import defold.support.Script;
 import defold.types.Message;
 import defold.types.Url;
@@ -32,52 +29,44 @@ import lua.lib.luasocket.Socket;
 }
 
 private typedef DeathData = {
-	@property(2.0) var remove:Float;
+	@property(4.0) var remove:Float;
 }
+
+final object_array = [
+	"long_bone0", "long_bone1", "long_bone2", "long_bone3", "long_bone4", "small_bone0", "small_bone1", "small_bone2", "small_bone3", "small_bone4",
+	"rib_cage", "skull"
+];
+
+final blood_object_array = [
+	"blong_bone0", "blong_bone1", "blong_bone2", "blong_bone3", "blong_bone4", "bsmall_bone0", "bsmall_bone1", "bsmall_bone2", "bsmall_bone3", "bsmall_bone4",
+	"brib_cage", "bskull"
+];
 
 class Death extends Script<DeathData> {
 	override function init(self:DeathData) {
 		lua.Math.randomseed(1000000 * (Socket.gettime() % 1));
-		Particlefx.play("#blood_spurt");
+		// Particlefx.play("#blood_spurt");
 		final _pso:ParticleFxStopOptions = {clear: true};
-		Particlefx.stop("#blood_spurt", _pso);
-		Sprite.play_flipbook('#sprite0', AnimationDeath.bskull);
-		Sprite.play_flipbook('#sprite1', AnimationDeath.brib_cage);
-		var _r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite2', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite2', AnimationDeath.bsmall_bone);
-		_r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite3', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite3', AnimationDeath.bsmall_bone);
-		_r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite4', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite4', AnimationDeath.bsmall_bone);
-		_r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite5', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite5', AnimationDeath.bsmall_bone);
-		_r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite6', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite6', AnimationDeath.bsmall_bone);
-		_r = Math.random();
-		if (_r > .5)
-			Sprite.play_flipbook('#sprite7', AnimationDeath.blong_bone);
-		else
-			Sprite.play_flipbook('#sprite7', AnimationDeath.bsmall_bone);
-		_r = Math.random();
+		// Particlefx.stop("#blood_spurt", _pso);
+
+		for (_o in blood_object_array) {
+			// lua.Math.randomseed(1000000 * (Socket.gettime() % 1));
+			Go.animate('/death/' + _o, "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
+				(_, _, _) -> Defold.pprint("X Finished"));
+			Go.animate('/death/' + _o, "position.y", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 200, GoEasing.EASING_LINEAR, .3, 0,
+				(_, _, _) -> Defold.pprint("Y Finished"));
+		}
 		//
 
-		Go.animate('#sprite0', "position.x", GoPlayback.PLAYBACK_ONCE_FORWARD, Vmath.vector3(10, 10, .1), GoEasing.EASING_LINEAR, 20);
-		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO should blink
+		// TODO Go.animate('/death/bskull', "rotation.z", GoPlayback.PLAYBACK_ONCE_FORWARD, Math.random() * 40, GoEasing.EASING_LINEAR, 20, 0,
+		// 	(_, _, _) -> Defold.pprint("Z Rotation Finished"));
+		// Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO should blink
+		// Timer.delay(self.remove, false, (_, _, _) -> {
+		// 	Go.animate('/death/bskull', "position.z", GoPlayback.PLAYBACK_ONCE_FORWARD, -1, GoEasing.EASING_LINEAR, 10, 0,
+		// 		(_, _, _) -> Defold.pprint("Alpha Finished"));
+		// }); // TODO should blink
+
+		Timer.delay(self.remove, false, (_, _, _) -> Go.delete()); // TODO delete th object flicker
 	}
 
 	override function update(self:DeathData, dt:Float):Void {}

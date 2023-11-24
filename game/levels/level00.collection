@@ -52,12 +52,12 @@ instances {
     z: 1.0
   }
 }
-instances {
-  id: "guts_organ_blood"
-  prototype: "/game/fx/death/guts_organ_blood.go"
+collection_instances {
+  id: "Minnie"
+  collection: "/game/characters_props/Protagonist/Minnie.collection"
   position {
-    x: 1121.0
-    y: 863.0
+    x: 906.0
+    y: 656.0
     z: 0.0
   }
   rotation {
@@ -73,11 +73,11 @@ instances {
   }
 }
 collection_instances {
-  id: "Minnie"
-  collection: "/game/characters_props/Protagonist/Minnie.collection"
+  id: "death"
+  collection: "/game/fx/death/death.collection"
   position {
-    x: 906.0
-    y: 656.0
+    x: 1103.0
+    y: 951.0
     z: 0.0
   }
   rotation {
