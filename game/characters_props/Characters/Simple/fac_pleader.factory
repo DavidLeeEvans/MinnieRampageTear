@@ -1,0 +1,3 @@
+prototype: "/game/characters_props/Characters/Simple/pleader.go"
+load_dynamically: false
+dynamic_prototype: false

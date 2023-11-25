@@ -1,6 +1,6 @@
 components {
   id: "bplease"
-  component: "/game/characters_props/Characters/bplease.script"
+  component: "/game/characters_props/Characters/Simple/bplease.script"
   position {
     x: 0.0
     y: 0.0

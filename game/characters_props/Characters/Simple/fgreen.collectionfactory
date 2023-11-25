@@ -1,0 +1,3 @@
+prototype: "/game/characters_props/Characters/Simple/green.collection"
+load_dynamically: false
+dynamic_prototype: false

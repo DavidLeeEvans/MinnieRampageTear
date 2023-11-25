@@ -1,37 +1,37 @@
 images {
-  image: "/game/characters_props/Characters/green_character.png"
+  image: "/game/characters_props/Characters/Simple/green_character.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/green_hand.png"
+  image: "/game/characters_props/Characters/Simple/green_hand.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/red_square.png"
+  image: "/game/characters_props/Characters/Simple/red_square.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/purple_character.png"
+  image: "/game/characters_props/Characters/Simple/purple_character.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/purple_hand.png"
+  image: "/game/characters_props/Characters/Simple/purple_hand.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/red_character.png"
+  image: "/game/characters_props/Characters/Simple/red_character.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/red_hand.png"
+  image: "/game/characters_props/Characters/Simple/red_hand.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/yellow_character.png"
+  image: "/game/characters_props/Characters/Simple/yellow_character.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/yellow_hand.png"
+  image: "/game/characters_props/Characters/Simple/yellow_hand.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {

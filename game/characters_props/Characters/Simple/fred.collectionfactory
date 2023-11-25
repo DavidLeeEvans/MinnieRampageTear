@@ -1,0 +1,3 @@
+prototype: "/game/characters_props/Characters/Simple/red.collection"
+load_dynamically: false
+dynamic_prototype: false
