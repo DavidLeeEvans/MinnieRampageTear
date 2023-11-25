@@ -37,7 +37,8 @@ private typedef GuiSackMenuData = {
 	var toggle_on_off_screen;
 	var item_select_rotate_right;
 	var item_select_rotate_left;
-	var item_select:{data:Int};
+	var item_select_left:{data:Int};
+	var item_select_right:{data:Int};
 }
 
 class GuiSackMenu extends GuiScript<GuiSackMenuData> {
@@ -235,7 +236,8 @@ class GuiSackMenu extends GuiScript<GuiSackMenuData> {
 					self.wmdindex = 0;
 				Msg.post("/Minnie/entity#Minnie", MinnieMessage.set_wmd_right, {data: self.hcurrent_wmd_left});
 
-			case GuiSackMenuMessage.item_select:
+			case GuiSackMenuMessage.item_select_left:
+			case GuiSackMenuMessage.item_select_right:
 			case GuiSackMenuMessage.toggle_on_off_screen:
 			case MinnieMessage.receive_pos:
 				self._mpos = message.pos;

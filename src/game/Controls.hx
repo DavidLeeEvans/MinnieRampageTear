@@ -17,6 +17,8 @@ private typedef ControlData = {
 	var pressed:Bool;
 	var id:Hash;
 	//
+	var wmd_right_left:Bool;
+	//
 	var _active_button_a:Bool;
 	var _active_button_b:Bool;
 	var _run_update:Bool;
@@ -49,6 +51,7 @@ private typedef ButtonData = {
 
 class Controls extends Script<ControlData> {
 	override function init(self:ControlData) {
+		self.wmd_right_left = false;
 		self._active_button_a = true;
 		self._active_button_b = true;
 		self._run_update = false;
@@ -77,8 +80,14 @@ class Controls extends Script<ControlData> {
 			case ControlMessage.button_b:
 				if (message.pressed && self._active_button_b) {
 					Defold.pprint('Control.hx Button B press $message');
-					Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate); // TODO Testing for rotation Stopped here
-					self._active_button_b = false;
+					if (self.wmd_right_left) {
+						Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate_right); // TODO Testing for rotation Stopped here
+						self._active_button_b = false;
+					} else {
+						Msg.post("/go#sack_menu", GuiSackMenuMessage.item_select_rotate_left); // TODO Testing for rotation Stopped here
+						self._active_button_b = false;
+					}
+					self.wmd_right_left = !self.wmd_right_left;
 				}
 				if (message.released)
 					self._active_button_b = true;
