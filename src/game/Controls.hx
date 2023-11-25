@@ -1,13 +1,14 @@
 package game;
 
+import defold.Go;
 import defold.Msg;
-import defold.Vmath;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
 import defold.types.Url;
 import defold.types.Vector3;
 import hud.GuiSackMenu.GuiSackMenuMessage;
+import lua.Math;
 
 private typedef ControlData = {
 	var x:Float;
@@ -16,7 +17,7 @@ private typedef ControlData = {
 	var pressed:Bool;
 	var id:Hash;
 	//
-	var speed:Vector3;
+	// var speed:Vector3;
 	var _active_button_a:Bool;
 	var _active_button_b:Bool;
 }
@@ -53,14 +54,7 @@ class Controls extends Script<ControlData> {
 		self._active_button_b = true;
 	}
 
-	override function update(self:ControlData, dt:Float):Void {
-		// final _pos = Go.get_world_position();
-		// Defold.pprint("------------ y2k like testing -----------------------");
-		// Defold.pprint(_pos);
-		// Defold.pprint(self.speed);
-		// final _test = Vmath.vector3(-10, 0, 0);
-		// Go.set_position(_pos + _test * dt);
-	}
+	override function update(self:ControlData, dt:Float):Void {}
 
 	override function on_message<T>(self:ControlData, message_id:Message<T>, message:T, sender:Url):Void {
 		switch (message_id) {
@@ -92,13 +86,17 @@ class Controls extends Script<ControlData> {
 			case ControlMessage.move:
 				if (message.pressed) {
 					Defold.pprint('Control.hx Press move x = ${message.x} y = ${message.y}');
-					self.speed.x = message.x;
-					self.speed.y = message.y;
+					// Go.animate(".", "euler.z", GoPlayback.PLAYBACK_LOOP_FORWARD, 360, GoEasing.EASING_LINEAR, 2);
+					Defold.pprint("----------------------------------------");
+					Defold.pprint('${message.x}  ${message.y}');
+					Defold.pprint(Math.tan(message.y / message.x));
+					Defold.pprint("----------------------------------------");
+					Go.animate(".", "euler.z", GoPlayback.PLAYBACK_LOOP_FORWARD, Math.acos(message.x / message.y), GoEasing.EASING_LINEAR, 2);
 				} else if (message.released) {
 					Defold.pprint('Control.hx Released move x = ${message.x} y = ${message.y}');
 					Defold.pprint(message.released);
-					self.speed.x = 0;
-					self.speed.y = 0;
+					// self.speed.x = 0;
+					// self.speed.y = 0;
 				}
 				/*
 					case MinnieMessage.send_pos:
