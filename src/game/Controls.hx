@@ -112,12 +112,12 @@ class Controls extends Script<ControlData> {
 				if (message.x == 0)
 					self._vector_move.x = 0;
 
-				if (message.y == 0)
-					self._vector_move.y = 0;
+				// if (message.y == 0)
+				// 	self._vector_move.y = 0;
 
-				if (message.x == 0 && message.y == 0) {
-					self._run_update = false;
-				}
+				// if (message.x == 0 && message.y == 0) {
+				// 	self._run_update = false;
+				// }
 
 				if (message.released) {
 					Defold.pprint('Control.hx Released move x = ${message.x} y = ${message.y}');
