@@ -17,7 +17,6 @@ private typedef ControlData = {
 	var pressed:Bool;
 	var id:Hash;
 	//
-	// var speed:Vector3;
 	var _active_button_a:Bool;
 	var _active_button_b:Bool;
 	var _run_update:Bool;
@@ -30,12 +29,9 @@ private typedef ButtonData = {
 	var y:Float;
 	var pressed:Bool;
 	var released:Bool;
-	//
 }
 
 @:build(defold.support.MessageBuilder.build()) class ControlMessage {
-	// var button_a:{data:ButtonData}; // WMD Weapon Menu
-	// var button_b:{data:ButtonData}; // Fire Weapon !!
 	var button_a:ButtonData; // WMD Weapon Menu
 	var button_b:ButtonData; // Fire Weapon !!
 	//
@@ -48,6 +44,7 @@ private typedef ButtonData = {
 	var analog_right:Bool;
 	var analog_up:Bool;
 	var analog_down:Bool;
+	var analog:ButtonData;
 }
 
 class Controls extends Script<ControlData> {
@@ -93,40 +90,41 @@ class Controls extends Script<ControlData> {
 			case ControlMessage.analog_moved:
 				Defold.pprint('Control.hx  analog_moved $message');
 			case ControlMessage.move:
-				if (message.pressed) {
-					if (message.x > .5) {
-						self._vector_move.x = Go.get("#Minnie", "speed");
-						self._run_update = true;
-					}
-					if (message.x < -.5) {
-						self._vector_move.x = -Go.get("#Minnie", "speed");
-						self._run_update = true;
-					}
-					if (message.y > .5) {
-						self._vector_move.y = Go.get("#Minnie", "speed");
-						self._run_update = true;
-					}
-					if (message.y < -.5) {
-						self._vector_move.y = -Go.get("#Minnie", "speed");
-						self._run_update = true;
-					}
-					if (message.x == 0)
-						self._vector_move.x = 0;
+				// Defold.pprint("=======================================");
+				// Defold.pprint(message);
+				// Defold.pprint("=======================================");
+				if (message.x > .5) {
+					self._vector_move.x = Go.get("#Minnie", "speed");
+					self._run_update = true;
+				}
+				if (message.x < -.5) {
+					self._vector_move.x = -Go.get("#Minnie", "speed");
+					self._run_update = true;
+				}
+				if (message.y > .5) {
+					self._vector_move.y = Go.get("#Minnie", "speed");
+					self._run_update = true;
+				}
+				if (message.y < -.5) {
+					self._vector_move.y = -Go.get("#Minnie", "speed");
+					self._run_update = true;
+				}
+				if (message.x == 0)
+					self._vector_move.x = 0;
 
-					if (message.y == 0)
-						self._vector_move.y = 0;
+				if (message.y == 0)
+					self._vector_move.y = 0;
 
-					if (message.x == 0 && message.y == 0) {
-						self._run_update = false;
-					}
+				if (message.x == 0 && message.y == 0) {
+					self._run_update = false;
+				}
 
-					if (message.released) {
-						Defold.pprint('Control.hx Released move x = ${message.x} y = ${message.y}');
-						Defold.pprint(message.released);
-						self._run_update = false;
-						self._vector_move.x = 0;
-						self._vector_move.y = 0;
-					}
+				if (message.released) {
+					Defold.pprint('Control.hx Released move x = ${message.x} y = ${message.y}');
+					Defold.pprint(message.released);
+					self._run_update = false;
+					self._vector_move.x = 0;
+					self._vector_move.y = 0;
 				}
 		}
 	}
