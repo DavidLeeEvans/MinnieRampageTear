@@ -128,6 +128,14 @@ class Controls extends Script<ControlData> {
 					self._vector_move.x = 0;
 					self._vector_move.y = 0;
 				}
+				if (self._run_update) {
+					final _original_rot = Go.get_world_rotation();
+					final _x = message.x;
+					final _y = message.y;
+					final _q = Vmath.quat(_x, _y, 0, 1);
+					// final _rotated_vet = Vmath.rotate(_q, Vmath.vector3(1, 0, 0));
+					Go.set_rotation(_q);
+				}
 		}
 	}
 
