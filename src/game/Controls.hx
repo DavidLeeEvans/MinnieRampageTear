@@ -90,9 +90,9 @@ class Controls extends Script<ControlData> {
 			case ControlMessage.analog_moved:
 				Defold.pprint('Control.hx  analog_moved $message');
 			case ControlMessage.move:
-				// Defold.pprint("=======================================");
-				// Defold.pprint(message);
-				// Defold.pprint("=======================================");
+				Defold.pprint("=======================================");
+				Defold.pprint(message);
+				Defold.pprint("=======================================");
 				if (message.x > .5) {
 					self._vector_move.x = Go.get("#Minnie", "speed");
 					self._run_update = true;
@@ -111,13 +111,6 @@ class Controls extends Script<ControlData> {
 				}
 				if (message.x == 0)
 					self._vector_move.x = 0;
-
-				// if (message.y == 0)
-				// 	self._vector_move.y = 0;
-
-				// if (message.x == 0 && message.y == 0) {
-				// 	self._run_update = false;
-				// }
 
 				if (message.released) {
 					Defold.pprint('Control.hx Released move x = ${message.x} y = ${message.y}');
