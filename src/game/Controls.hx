@@ -129,12 +129,11 @@ class Controls extends Script<ControlData> {
 					self._vector_move.y = 0;
 				}
 				if (self._run_update) {
-					final _original_rot = Go.get_world_rotation();
-					final _x = message.x;
-					final _y = message.y;
-					final _q = Vmath.quat(_x, _y, 0, 1);
-					// final _rotated_vet = Vmath.rotate(_q, Vmath.vector3(1, 0, 0));
-					Go.set_rotation(_q);
+					var _original_rot = Go.get_world_rotation();
+					_original_rot.x = message.x;
+					_original_rot.y = message.y;
+					Defold.pprint(_original_rot);
+					Go.set_rotation(_original_rot);
 				}
 		}
 	}
