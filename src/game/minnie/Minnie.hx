@@ -34,7 +34,8 @@ private typedef MinnieData = {
 	var send_rot;
 	var receive_pos:{pos:Vector3};
 	var receive_rot:{rot:Quaternion};
-	var set_wmd:{data:Hash}; // TODO research this dle
+	var set_wmd_right:{data:Hash}; // TODO research this dle
+	var set_wmd_left:{data:Hash}; // TODO research this dle
 	//
 	var set_state:{state:Int};
 }
@@ -75,8 +76,8 @@ class Minnie extends Script<MinnieData> {
 				Msg.post(sender, MinnieMessage.receive_pos, {pos: Go.get_position()});
 			case MinnieMessage.send_rot:
 				Msg.post(sender, MinnieMessage.receive_rot, {rot: Go.get_rotation()});
-			case MinnieMessage.set_wmd:
-				Go.set_parent(message.data, ".", true);
+			case MinnieMessage.set_wmd_right:
+				Go.set_parent(message.data, ".", true); // TODO set to bone hands
 			case MinnieMessage.set_state:
 				self.state = message.state;
 				switch (message.state) {
