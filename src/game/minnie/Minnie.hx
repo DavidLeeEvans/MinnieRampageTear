@@ -1,9 +1,7 @@
 package game.minnie;
 
-import defold.Sprite;
 import defold.Go;
 import defold.Msg;
-import defold.Vmath;
 import defold.support.Script;
 import defold.types.Hash;
 import defold.types.Message;
@@ -27,7 +25,7 @@ import defold.types.Vector3;
 }
 
 private typedef MinnieData = {
-	@property var speed:Vector3;
+	@property(2.0) var speed:Float;
 	@property var state:Int;
 }
 
@@ -60,9 +58,7 @@ enum abstract MinnieState(Int) {
 }
 
 class Minnie extends Script<MinnieData> {
-	override function init(self:MinnieData) {
-		self.speed = Vmath.vector3(0, 0, 0);
-	}
+	override function init(self:MinnieData) {}
 
 	override function update(self:MinnieData, dt:Float):Void {
 		// final _pos = Go.get_world_position();
@@ -85,13 +81,13 @@ class Minnie extends Script<MinnieData> {
 				self.state = message.state;
 				switch (message.state) {
 					case 0:
-						// TODO Attack
-						case 1:
-						// TODO Walking
+					// TODO Attack
+					case 1:
+					// TODO Walking
 					case 2:
-						// Running
+					// Running
 					case 3:
-						//
+					//
 					case 4:
 					case 5:
 					case 6:
