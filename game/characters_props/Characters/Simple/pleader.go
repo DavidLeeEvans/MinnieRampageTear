@@ -16,8 +16,8 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"\"\n"
-  "default_animation: \"\"\n"
+  data: "tile_set: \"/game/characters_props/Characters/Simple/simple_emoji.atlas\"\n"
+  "default_animation: \"tile000\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

@@ -49,7 +49,6 @@ private typedef ButtonData = {
 
 class Controls extends Script<ControlData> {
 	override function init(self:ControlData) {
-		self.speed = Vmath.vector3(0, 0, 0);
 		self._active_button_a = true;
 		self._active_button_b = true;
 	}
@@ -90,8 +89,6 @@ class Controls extends Script<ControlData> {
 				Defold.pprint('Control.hx analog_pressed $message.');
 			case ControlMessage.analog_moved:
 				Defold.pprint('Control.hx  analog_moved $message');
-			// self.speed.x = message.x * 200;
-			// self.speed.y = message.y * 200;
 			case ControlMessage.move:
 				if (message.pressed) {
 					Defold.pprint('Control.hx Press move x = ${message.x} y = ${message.y}');
