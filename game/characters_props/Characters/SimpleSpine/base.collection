@@ -83,7 +83,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "components {\n"
-  "  id: \"base_spinemodel\"\n"
+  "  id: \"spine\"\n"
   "  component: \"/game/characters_props/Characters/SimpleSpine/base_spinemodel.spinemodel\"\n"
   "  position {\n"
   "    x: 0.0\n"
