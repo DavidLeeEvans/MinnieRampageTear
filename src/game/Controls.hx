@@ -132,8 +132,15 @@ class Controls extends Script<ControlData> {
 					var _original_rot = Go.get_world_rotation();
 					_original_rot.x = message.x;
 					_original_rot.y = message.y;
-					Defold.pprint(_original_rot);
-					Go.set_rotation(_original_rot);
+					final _new_angle = Vmath.quat_rotation_z(Math.atan2(message.x, message.y));
+					Go.set_rotation(_new_angle);
+
+					//
+					// local crosshair_world = go.get_world_position("crosshair")
+					// local player_world = go.get_world_position()
+					// local angle = math.atan2(player_world.x - crosshair_world.x, crosshair_world.y - player_world.y)
+					// local rotation = vmath.quat_rotation_z(angle)
+					// go.set_rotation(rotation
 				}
 		}
 	}
