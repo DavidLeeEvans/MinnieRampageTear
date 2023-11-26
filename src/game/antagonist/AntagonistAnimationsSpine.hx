@@ -9,7 +9,9 @@ import defold.types.Message;
 import defold.types.Url;
 import lua.Table;
 
-private typedef AntagonistAnimationsSpineData = {}
+private typedef AntagonistAnimationsSpineData = {
+@property(-1) var type:Int;
+}
 
 class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
 	override function init(self:AntagonistAnimationsSpineData) {
