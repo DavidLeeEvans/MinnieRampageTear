@@ -10,7 +10,7 @@ import defold.types.Url;
 import lua.Table;
 
 private typedef AntagonistAnimationsSpineData = {
-@property(-1) var type:Int;
+ @property(-1)  var type:Int;
 }
 
 class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
