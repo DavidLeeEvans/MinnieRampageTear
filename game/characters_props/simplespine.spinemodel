@@ -1,0 +1,6 @@
+spine_scene: "/game/characters_props/Characters/SimpleSpine/simplespine.spinescene"
+default_animation: "Jumping"
+skin: ""
+blend_mode: BLEND_MODE_ALPHA
+material: "/defold-spine/assets/spine.material"
+create_go_bones: false
