@@ -1,401 +1,401 @@
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile000.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile000.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile001.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile001.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile002.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile002.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile003.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile003.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile004.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile004.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile005.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile005.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile006.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile006.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile007.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile007.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile008.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile008.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile009.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile009.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile010.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile010.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile011.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile011.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile012.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile012.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile013.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile013.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile014.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile014.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile015.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile015.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile016.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile016.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile017.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile017.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile018.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile018.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile019.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile019.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile020.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile020.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile021.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile021.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile022.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile022.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile023.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile023.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile024.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile024.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile025.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile025.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile026.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile026.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile027.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile027.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile028.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile028.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile029.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile029.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile030.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile030.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile031.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile031.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile032.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile032.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile033.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile033.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile034.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile034.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile035.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile035.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile036.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile036.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile037.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile037.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile038.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile038.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile039.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile039.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile040.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile040.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile041.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile041.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile042.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile042.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile043.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile043.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile044.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile044.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile045.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile045.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile046.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile046.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile047.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile047.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile048.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile048.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile049.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile049.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile050.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile050.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile051.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile051.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile052.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile052.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile053.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile053.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile054.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile054.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile055.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile055.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile056.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile056.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile057.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile057.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile058.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile058.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile059.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile059.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile060.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile060.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile061.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile061.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile062.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile062.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile063.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile063.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile064.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile064.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile065.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile065.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile066.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile066.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile067.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile067.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile068.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile068.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile069.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile069.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile070.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile070.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile071.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile071.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile072.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile072.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile073.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile073.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile074.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile074.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile075.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile075.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile076.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile076.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile077.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile077.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile078.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile078.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile079.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile079.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile080.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile080.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile081.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile081.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile082.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile082.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile083.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile083.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile084.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile084.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile085.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile085.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile086.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile086.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile087.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile087.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile088.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile088.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile089.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile089.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile090.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile090.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile091.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile091.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile092.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile092.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile093.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile093.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile094.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile094.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile095.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile095.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile096.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile096.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile097.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile097.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile098.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile098.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/game/characters_props/Characters/Simple/images/tile099.png"
+  image: "/game/characters_props/Characters/Pleader/images/tile099.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

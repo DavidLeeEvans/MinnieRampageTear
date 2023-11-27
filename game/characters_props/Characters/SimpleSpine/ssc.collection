@@ -77,7 +77,7 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"fac_pleader\"\n"
-  "  component: \"/game/characters_props/Characters/Simple/fac_pleader.factory\"\n"
+  "  component: \"/game/characters_props/Characters/Pleader/fac_pleader.factory\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
