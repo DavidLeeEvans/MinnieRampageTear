@@ -20,7 +20,7 @@ private typedef AntagonistAnimationsSpineData = {
 
 class AntagonistAnimationsSpine extends Script<AntagonistAnimationsSpineData> {
 	override function init(self:AntagonistAnimationsSpineData) {
-		lua.Lua.assert(self.type != -1 || self.type > 3, "!!!!!!!!!!!!!!! AntagonistAnimationsSpine.hx type is not set correct!!!!!!!!!!!!!");
+		lua.Lua.assert(self.type != -1 || self.type < 4, "!!!!!!!!!!!!!!! AntagonistAnimationsSpine.hx type is not set correct!!!!!!!!!!!!!");
 		final _left_wmd_id = Spine.get_go("#spine", hash("left-hand"));
 		final _right_wmd_id = Spine.get_go("#spine", hash("right-hand"));
 		final _body_id = Spine.get_go("#spine", hash("character"));
