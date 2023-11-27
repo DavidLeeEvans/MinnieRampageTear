@@ -73,11 +73,11 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "red"
+  id: "ssc"
   collection: "/game/characters_props/Characters/SimpleSpine/ssc.collection"
   position {
-    x: 0.0
-    y: 0.0
+    x: 982.0
+    y: 906.0
     z: 0.0
   }
   rotation {
@@ -85,6 +85,17 @@ collection_instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  instance_properties {
+    id: "go"
+    properties {
+      id: "AntagonistAnimationsSpine"
+      properties {
+        id: "type"
+        value: "4.0"
+        type: PROPERTY_TYPE_NUMBER
+      }
+    }
   }
   scale3 {
     x: 1.0
