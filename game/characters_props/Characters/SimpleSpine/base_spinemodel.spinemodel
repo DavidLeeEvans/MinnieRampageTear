@@ -1,6 +1,0 @@
-spine_scene: "/game/characters_props/Characters/SimpleSpine/base_spinescene.spinescene"
-default_animation: "Spawning"
-skin: ""
-blend_mode: BLEND_MODE_ALPHA
-material: "/defold-spine/assets/spine.material"
-create_go_bones: true
